@@ -64,7 +64,7 @@ public class Main {
                 break;
             case 5:
                 // Testando programação dinâmica
-                ProgramacaoDinamica programacaoDinamica = new ProgramacaoDinamica();
+                ProgDinamica programacaoDinamica = new ProgDinamica();
                 long inicioProgramacaoDinamica = System.currentTimeMillis();
                 int melhorValorProgramacaoDinamica = programacaoDinamica.resolver(lances, energiaTotal);
                 long fimProgramacaoDinamica = System.currentTimeMillis();
