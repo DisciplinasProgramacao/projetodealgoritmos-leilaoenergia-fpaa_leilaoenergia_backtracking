@@ -55,21 +55,21 @@ public class Main {
                 break;
             case 2:
                 // Testando algoritmo guloso 1 (maior valor)
-//                Guloso algoritmoGuloso1 = new Guloso();
-//                long inicioGuloso1 = System.currentTimeMillis();
-//                int melhorValorGuloso1 = algoritmoGuloso1.resolverEstrategia1(lances, energiaTotal);
-//                long fimGuloso1 = System.currentTimeMillis();
-//                System.out.println("Melhor valor obtido (Guloso 1): " + melhorValorGuloso1);
-//                System.out.println("Tempo de execução (Guloso 1): " + (fimGuloso1 - inicioGuloso1) + "ms");
+                Guloso algoritmoGuloso1 = new Guloso();
+                long inicioGuloso1 = System.currentTimeMillis();
+                int melhorValorGuloso1 = algoritmoGuloso1.resolverEstrategia1(lances, energiaTotal);
+                long fimGuloso1 = System.currentTimeMillis();
+                System.out.println("Melhor valor obtido (Guloso 1): " + melhorValorGuloso1);
+                System.out.println("Tempo de execução (Guloso 1): " + (fimGuloso1 - inicioGuloso1) + "ms");
                 break;
             case 3:
                 // Testando algoritmo guloso 2 (melhor razão valor/energia)
-//                Guloso algoritmoGuloso2 = new Guloso();
-//                long inicioGuloso2 = System.currentTimeMillis();
-//                int melhorValorGuloso2 = algoritmoGuloso2.resolverEstrategia2(lances, energiaTotal);
-//                long fimGuloso2 = System.currentTimeMillis();
-//                System.out.println("Melhor valor obtido (Guloso 2): " + melhorValorGuloso2);
-//                System.out.println("Tempo de execução (Guloso 2): " + (fimGuloso2 - inicioGuloso2) + "ms");
+                Guloso algoritmoGuloso2 = new Guloso();
+                long inicioGuloso2 = System.currentTimeMillis();
+                int melhorValorGuloso2 = algoritmoGuloso2.resolverEstrategia2(lances, energiaTotal);
+                long fimGuloso2 = System.currentTimeMillis();
+                System.out.println("Melhor valor obtido (Guloso 2): " + melhorValorGuloso2);
+                System.out.println("Tempo de execução (Guloso 2): " + (fimGuloso2 - inicioGuloso2) + "ms");
                 break;
             case 4:
                 // Testando divisão e conquista
