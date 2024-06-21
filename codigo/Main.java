@@ -90,7 +90,7 @@ public class Main {
             System.out.println("Opção inválida");
         }
 
-        int energiaTotal = 10000;
+        int energiaTotal = 8000;
 
         System.out.println("Escolha uma opção:");
         System.out.println("1. Backtracking");
