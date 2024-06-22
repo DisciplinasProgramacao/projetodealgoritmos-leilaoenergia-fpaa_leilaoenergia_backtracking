@@ -53,17 +53,17 @@ public class Main {
                             System.out
                                     .println("Tempo de execução em segundos para " + i + " lances: " + timeElapsed);
 
-                        }
-                        System.out.println("Conjunto de lances selecionados:");
-                        for (Lance lance : backtracking.getMelhorCombinacao()) {
-                            System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
-                                    + lance.getValor() + " dinheiros");
-                        }
-                        System.out.println("Valor total gasto: " + backtracking.getMelhorValor());
-                        System.out.println(
-                                "Valor total de energia obtido: "
-                                        + backtracking.getEnergiaTotalMelhorCombinacao());
+                            System.out.println("Conjunto de lances selecionados:");
+                            for (Lance lance : backtracking.getMelhorCombinacao()) {
+                                System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
+                                        + lance.getValor() + " dinheiros");
+                            }
+                            System.out.println("Valor total gasto: " + backtracking.getMelhorValor());
+                            System.out.println(
+                                    "Valor total de energia obtido: "
+                                            + backtracking.getEnergiaTotalMelhorCombinacao());
 
+                        }
                         scanner.close();
                         break;
                     case 2:
