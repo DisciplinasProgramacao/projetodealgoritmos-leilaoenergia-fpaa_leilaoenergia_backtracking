@@ -113,9 +113,9 @@ public class Main {
                         System.out.println("Opção inválida.");
                         break;
                 }
-                scanner.close();
-                // FINALIZA AQUI O CASE 1
-                // INICIA AQUI O CASE 2
+                break;
+            // FINALIZA AQUI O CASE 1
+            // INICIA AQUI O CASE 2
             case 2:
                 System.out.println("Escolha um conjunto de empresas interessadas: ");
                 System.out.println("1. Conjunto 1");
