@@ -64,25 +64,26 @@ public class Main {
                                             + backtracking.getEnergiaTotalMelhorCombinacao());
 
                         }
-                        scanner.close();
+
                         break;
                     case 2:
-                        scanner.close();
+
                         break;
                     case 3:
-                        scanner.close();
+
                         break;
                     case 4:
-                        scanner.close();
+
                         break;
                     case 5:
-                        scanner.close();
+
                         break;
 
                     default:
                         System.out.println("Opção inválida.");
                         break;
                 }
+                scanner.close();
                 // FINALIZA AQUI O CASE 1
                 // INICIA AQUI O CASE 2
             case 2:
@@ -172,7 +173,7 @@ public class Main {
                         System.out.println("Melhor Valor Obtido: " + backtracking.melhorValorTotal + " dinheiros");
                         double timeElapsed = (fim - inicio) / 1000.0;
                         System.out.println("Tempo de execução em segundos: " + timeElapsed);
-                        scanner.close();
+
                         break;
                     case 2:
                         // Testando algoritmo guloso 1 (maior valor total);
@@ -182,7 +183,7 @@ public class Main {
                         long fimGuloso1 = System.currentTimeMillis();
                         System.out.println("Melhor valor obtido (Guloso 1): " + melhorValorGuloso1);
                         System.out.println("Tempo de execução (Guloso 1): " + (fimGuloso1 - inicioGuloso1) + "ms");
-                        scanner.close();
+
                         break;
                     case 3:
                         // Testando algoritmo guloso 2 (melhor razão valor/energia);
@@ -192,7 +193,7 @@ public class Main {
                         long fimGuloso2 = System.currentTimeMillis();
                         System.out.println("Melhor valor obtido (Guloso 2): " + melhorValorGuloso2);
                         System.out.println("Tempo de execução (Guloso 2): " + (fimGuloso2 - inicioGuloso2) + "ms");
-                        scanner.close();
+
                         break;
                     case 4:
                         // Testando divisão e conquista;
@@ -204,7 +205,7 @@ public class Main {
                                 "Melhor valor obtido (Divisão e Conquista): " + melhorValorDivisaoConquista);
                         System.out.println("Tempo de execução (Divisão e Conquista): "
                                 + (fimDivConquista - inicioDivConquista) + "ms");
-                        scanner.close();
+
                         break;
                     case 5:
                         // Testando programação dinâmica;
@@ -216,7 +217,7 @@ public class Main {
                                 "Melhor valor obtido (Programação Dinâmica): " + melhorValorProgramacaoDinamica);
                         System.out.println("Tempo de execução (Programação Dinâmica): "
                                 + (fimProgramacaoDinamica - inicioProgramacaoDinamica) + "ms");
-                        scanner.close();
+
                         break;
                     default:
                         System.out.println("Opção inválida.");
