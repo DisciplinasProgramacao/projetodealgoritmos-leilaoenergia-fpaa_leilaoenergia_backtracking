@@ -88,6 +88,7 @@ public class Main {
             lances.add(new Lance(476, 2480));
         } else {
             System.out.println("Opção inválida");
+            scanner.close();
         }
 
         int energiaTotal = 8000;
@@ -110,6 +111,7 @@ public class Main {
                 System.out.println("Melhor valor obtido (Backtracking): " + melhorValorBacktracking);
                 System.out
                         .println("Tempo de execução (Backtracking): " + (fimBacktracking - inicioBacktracking) + "ms");
+                backtracking.imprimirMelhorCombinacao();
                 break;
             case 2:
                 // Testando algoritmo guloso 1 (maior valor)
