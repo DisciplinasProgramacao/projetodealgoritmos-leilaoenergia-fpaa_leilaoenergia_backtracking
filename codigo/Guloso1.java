@@ -1,13 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Guloso1 {
 
-public class Guloso {
-    public int resolverEstrategia1(List<Lance> lances, int energiaDisponivel) {
-        // Ordenar lances pelo maior valor total oferecido (valor);
-        lances.sort((o1, o2) -> Integer.compare(o2.getValor(), o1.getValor()));
+    public int resolverEstrategia2(List<Lance> lances, int energiaDisponivel) {
+        // Ordenar lances pelo maior valor por megawatt (valor / energia)
+        lances.sort((o1, o2) -> Double.compare((double)o2.getValor() / o2.getEnergia(), (double)o1.getValor() / o1.getEnergia()));
 
         int energiaVendida = 0;
         int valorTotal = 0;
@@ -21,8 +19,8 @@ public class Guloso {
             }
         }
 
-        // Imprimir os lances selecionados;
-        imprimirLancesSelecionados("Maior Valor Total Primeiro", lancesSelecionados);
+        // Imprimir os lances selecionados
+        imprimirLancesSelecionados("Maior Valor por Megawatt Primeiro", lancesSelecionados);
         return valorTotal;
     }
 
