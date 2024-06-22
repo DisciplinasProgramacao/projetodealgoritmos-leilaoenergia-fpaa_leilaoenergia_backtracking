@@ -1,21 +1,49 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         List<Lance> lances = new ArrayList<>();
+        int energiaTotal = 8000;// Quantidade X de energia, medida em megawatts, para vender;
+        Random ramdom = new Random();
         try (Scanner scanner = new Scanner(System.in)) {
             int opcao1;
             // Seleção do Conjunto de empresas interessadas;
             // Loop Do/While para prevenir que uma opção inválida seja selecionada;
             do {
                 System.out.println("Escolha um conjunto de empresas interessadas:");
-                System.out.println("1. Conjunto 1");
-                System.out.println("2. Conjunto 2");
+                System.out.println("1. Nosso conjunto");
+                System.out.println("2. Conjunto 1");
+                System.out.println("3. Conjunto 2");
                 opcao1 = scanner.nextInt();
-                // Conjunto de empresas interessadas 1;
+
                 if (opcao1 == 1) {
+                    // Criar aqui nosso conjunto
+
+
+                    for (int i = 10; i <= energiaTotal / 100; i++) {
+                        List<Lance> lances = new ArrayList<>();
+                        for (int j = 0; j < i; j++) {
+                            int energia = 100 + random.nextInt(400);
+                            int valor = 1000 + random.nextInt(1000);
+                            lances.add(new Lance(energia, valor));
+                        }
+                    
+                        Backtracking backtracking = new Backtracking();
+                        long inicio = System.currentTimeMillis();
+                        backtracking.resolver(lances, energiaTotal);
+                        long fim = System.currentTimeMillis();
+                    
+                        double timeElapsed = (fim - inicio) / 1000.0;
+                        System.out.println("Tempo de execução em segundos para " + i + " lances: " + timeElapsed);
+                    
+                        if (timeElapsed > 30.0) {
+                            System.out.println("O algoritmo demorou mais de 30 segundos para resolver o problema com " + i + " lances.");
+                            break;
+                        }
+                }
+
+                else if (opcao1 == 2) {
+                    // Conjunto de empresas interessadas 1;
                     lances.add(new Lance(430, 1043));
                     lances.add(new Lance(428, 1188));
                     lances.add(new Lance(410, 1565));
@@ -41,9 +69,9 @@ public class Main {
                     lances.add(new Lance(415, 1624));
                     lances.add(new Lance(387, 1280));
                     lances.add(new Lance(417, 1330));
-                }
-                // Conjunto de empresas interessadas 2;
-                else if (opcao1 == 2) {
+
+                } else if (opcao1 == 3) {
+                    // Conjunto de empresas interessadas 2;
                     lances.add(new Lance(313, 1496));
                     lances.add(new Lance(398, 1768));
                     lances.add(new Lance(240, 1210));
@@ -69,14 +97,13 @@ public class Main {
                     lances.add(new Lance(279, 1311));
                     lances.add(new Lance(589, 3164));
                     lances.add(new Lance(476, 2480));
-
                 } else {
                     System.out.println("Opção inválida");
+                    scanner.close();
                 }
             } while (opcao1 != 1 && opcao1 != 2);
 
-            int energiaTotal = 8000;// Quantidade X de energia, medida em megawatts, para vender;
-
+            
             System.out.println("Escolha uma opção de algoritmo:");
             System.out.println("1. Backtracking");
             System.out.println("2. Algoritmo guloso 1");
