@@ -32,6 +32,8 @@ public class Main {
                     opcao2 = scanner.nextInt();
                     switch (opcao2) {
                         case 1:
+                            Backtracking backtracking = new Backtracking();
+                            double timeElapsed;
                             for (int i = 10;; i++) { // Loop infinito que só termina quando o tempo de execução
                                                      // ultrapassa
                                 // 30 segundos
@@ -42,12 +44,11 @@ public class Main {
                                     lances.add(new Lance(energia, valor));
                                 }
 
-                                Backtracking backtracking = new Backtracking();
                                 long inicio = System.currentTimeMillis();
                                 backtracking.resolver(lances, energiaTotal);
                                 long fim = System.currentTimeMillis();
 
-                                double timeElapsed = (fim - inicio) / 1000.0;
+                                timeElapsed = (fim - inicio) / 1000.0;
 
                                 if (timeElapsed > 30.0) {
                                     System.out
@@ -56,19 +57,20 @@ public class Main {
                                                             + i + " lances.");
                                     break;
                                 }
-
                                 System.out
                                         .println("Tempo de execução em segundos para " + i + " lances: " + timeElapsed);
-                                System.out.println("Valor total gasto: " + backtracking.getMelhorValor());
-                                System.out.println(
-                                        "Valor total de energia obtido: "
-                                                + backtracking.getEnergiaTotalMelhorCombinacao());
-                                System.out.println("Conjunto de lances selecionados:");
-                                for (Lance lance : backtracking.getMelhorCombinacao()) {
-                                    System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
-                                            + lance.getValor() + " dinheiros");
-                                }
+
                             }
+                            System.out.println("Conjunto de lances selecionados:");
+                            for (Lance lance : backtracking.getMelhorCombinacao()) {
+                                System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
+                                        + lance.getValor() + " dinheiros");
+                            }
+                            System.out.println("Valor total gasto: " + backtracking.getMelhorValor());
+                            System.out.println(
+                                    "Valor total de energia obtido: "
+                                            + backtracking.getEnergiaTotalMelhorCombinacao());
+
                             break;
                         case 2:
                             break;
@@ -87,7 +89,7 @@ public class Main {
                     // INICIA AQUI O CASE 2
                 case 2:
                     System.out.println("Escolha um conjunto de empresas interessadas: ");
-                    System.out.println("1. Conjunto 1 ");
+                    System.out.println("1. Conjunto 1");
                     System.out.println("2. Conjunto 2");
                     opcao4 = scanner.nextInt();
 
