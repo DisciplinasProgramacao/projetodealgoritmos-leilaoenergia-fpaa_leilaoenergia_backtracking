@@ -2,29 +2,28 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-
         try (Scanner scanner = new Scanner(System.in)) {
             List<Lance> lances = new ArrayList<>();
             Random random = new Random();
-            int energiaTotal = 8000;// Quantidade X de energia, medida em megawatts, para vender;
-            int opcao1;
-            int op;
+            int energiaTotal = 8000; // Quantidade X de energia, medida em megawatts, para vender;
+            int opcao1; // Determina o conjunto de empresas interessadas;
+            int opcao2; // Determina o algoritmo escolhido;
             // Seleção do Conjunto de empresas interessadas;
-            // Loop Do/While para prevenir que uma opção inválida seja selecionada;
             System.out.println("Escolha um conjunto de empresas interessadas:");
             System.out.println("1. Nosso conjunto");
             System.out.println("2. Conjunto 1");
             System.out.println("3. Conjunto 2");
             opcao1 = scanner.nextInt();
-
             if (opcao1 == 1) {
-                // Criar aqui nosso conjunto
-                System.out.println("Escolha um algoritmo:");
+                // Criar aqui nosso conjunto;
+                System.out.println("Escolha uma opção de algoritmo:");
                 System.out.println("1. Backtracking");
-                System.out.println("2. Programação Dinamica");
-                op = scanner.nextInt();
-
-                switch (op) {
+                System.out.println("2. Algoritmo guloso 1");
+                System.out.println("3. Algoritmo guloso 2");
+                System.out.println("4. Divisão e conquista");
+                System.out.println("5. Programação dinâmica");
+                opcao2 = scanner.nextInt();
+                switch (opcao2) {
                     case 1:
                         for (int i = 10; i <= energiaTotal / 100; i++) {
                             lances = new ArrayList<>();
@@ -62,14 +61,10 @@ public class Main {
                             }
                             break;
                         }
-
                     default:
                         break;
                 }
-
-            }
-
-            else if (opcao1 == 2) {
+            } else if (opcao1 == 2) {
                 // Conjunto de empresas interessadas 1;
                 lances.add(new Lance(430, 1043));
                 lances.add(new Lance(428, 1188));
@@ -129,21 +124,21 @@ public class Main {
                 scanner.close();
             }
 
+            // Escolha do algoritmo;
             System.out.println("Escolha uma opção de algoritmo:");
             System.out.println("1. Backtracking");
             System.out.println("2. Algoritmo guloso 1");
             System.out.println("3. Algoritmo guloso 2");
             System.out.println("4. Divisão e conquista");
             System.out.println("5. Programação dinâmica");
-            int opcao = scanner.nextInt();
+            opcao2 = scanner.nextInt();
             // Switch para a escolha do Algoritmo;
-            switch (opcao) {
+            switch (opcao2) {
                 case 1:
                     // Testando backtracking;
                     Backtracking backtracking = new Backtracking();
                     long inicio = System.currentTimeMillis();
                     backtracking.resolver(lances, energiaTotal);
-
                     int energiaTotalVendida = 0;
                     for (Lance lance : backtracking.getMelhorCombinacao()) {
                         energiaTotalVendida += lance.getEnergia();
@@ -152,7 +147,6 @@ public class Main {
                     long fim = System.currentTimeMillis();
                     System.out.println("Energia Total Vendida: " + energiaTotalVendida + " MW");
                     System.out.println("Melhor Valor Obtido: " + backtracking.melhorValorTotal + " dinheiros");
-
                     double timeElapsed = (fim - inicio) / 1000.0;
                     System.out.println("Tempo de execução em segundos: " + timeElapsed);
                     break;
@@ -181,9 +175,8 @@ public class Main {
                     int melhorValorDivisaoConquista = divisaoEConquista.resolver(lances, energiaTotal);
                     long fimDivConquista = System.currentTimeMillis();
                     System.out.println("Melhor valor obtido (Divisão e Conquista): " + melhorValorDivisaoConquista);
-                    System.out.println(
-                            "Tempo de execução (Divisão e Conquista): " + (fimDivConquista - inicioDivConquista)
-                                    + "ms");
+                    System.out.println("Tempo de execução (Divisão e Conquista): " 
+                    + (fimDivConquista - inicioDivConquista) + "ms");
                     break;
                 case 5:
                     // Testando programação dinâmica;
@@ -193,7 +186,7 @@ public class Main {
                     long fimProgramacaoDinamica = System.currentTimeMillis();
                     System.out.println("Melhor valor obtido (Programação Dinâmica): " + melhorValorProgramacaoDinamica);
                     System.out.println("Tempo de execução (Programação Dinâmica): "
-                            + (fimProgramacaoDinamica - inicioProgramacaoDinamica) + "ms");
+                    + (fimProgramacaoDinamica - inicioProgramacaoDinamica) + "ms");
                     break;
                 default:
                     System.out.println("Opção inválida.");
