@@ -7,7 +7,7 @@ public class Main {
         List<Lance> lances = new ArrayList<>();
         try (Scanner scanner = new Scanner(System.in)) {
             int opcao1;
-            do{
+            do {
                 System.out.println("Escolha um conjunto de empresas interessadas:");
                 System.out.println("1. Conjunto 1");
                 System.out.println("2. Conjunto 2");
@@ -92,7 +92,7 @@ public class Main {
                 } else {
                     System.out.println("Opção inválida");
                 }
-            } while(opcao1 != 1 && opcao1 != 2);
+            } while (opcao1 != 1 && opcao1 != 2);
 
             int energiaTotal = 8000;
 
@@ -106,15 +106,21 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    // Testando backtracking
                     Backtracking backtracking = new Backtracking();
-                    long inicioBacktracking = System.currentTimeMillis();
-                    int melhorValorBacktracking = backtracking.resolver(lances, energiaTotal);
-                    long fimBacktracking = System.currentTimeMillis();
-                    System.out.println("Melhor valor obtido (Backtracking): " + melhorValorBacktracking);
-                    System.out
-                            .println("Tempo de execução (Backtracking): " + (fimBacktracking - inicioBacktracking) + "ms");
+                    long inicio = System.currentTimeMillis();
+                    backtracking.resolver(lances, energiaTotal);
+
+                    int energiaTotalVendida = 0;
+                    for (Lance lance : backtracking.getMelhorCombinacao()) {
+                        energiaTotalVendida += lance.getEnergia();
+                    }
                     backtracking.imprimirMelhorCombinacao();
+                    long fim = System.currentTimeMillis();
+                    System.out.println("Energia Total Vendida: " + energiaTotalVendida + " MW");
+                    System.out.println("Melhor Valor Obtido: " + backtracking.melhorValorTotal + " dinheiros");
+
+                    double timeElapsed = (fim - inicio) / 1000.0;
+                    System.out.println("Tempo de execução em segundos: " + timeElapsed);
                     break;
                 case 2:
                     // Testando algoritmo guloso 1 (maior valor total)
@@ -142,7 +148,8 @@ public class Main {
                     long fimDivConquista = System.currentTimeMillis();
                     System.out.println("Melhor valor obtido (Divisão e Conquista): " + melhorValorDivisaoConquista);
                     System.out.println(
-                            "Tempo de execução (Divisão e Conquista): " + (fimDivConquista - inicioDivConquista) + "ms");
+                            "Tempo de execução (Divisão e Conquista): " + (fimDivConquista - inicioDivConquista)
+                                    + "ms");
                     break;
                 case 5:
                     // Testando programação dinâmica

@@ -1,39 +1,51 @@
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Backtracking {
-    private List<Lance> melhorCombinacao;
+    public List<Lance> melhorCombinacao;
+    public int melhorValorTotal; // Atributo para armazenar o melhor valor total
 
-    public int resolver(List<Lance> lances, int energiaTotal) {
-        melhorCombinacao = new ArrayList<>();
-        return backtracking(lances, energiaTotal, 0, 0, 0, new ArrayList<>());
+    public Backtracking() {
+        this.melhorCombinacao = new ArrayList<>();
+        this.melhorValorTotal = 0;
     }
 
-    private int backtracking(List<Lance> lances, int energiaRestante, int valorAtual, int melhorValor,
-            int indiceAtual, List<Lance> combinacaoAtual) {
-        if (indiceAtual >= lances.size() || energiaRestante < 0) {
-            if (valorAtual > melhorValor && energiaRestante >= 0) {
-                melhorCombinacao = new ArrayList<>(combinacaoAtual);
-                melhorValor = valorAtual;
-            }
-            return melhorValor;
-        }
+    public int resolver(List<Lance> lances, int energiaTotal) {
+        melhorValorTotal = 0; // Reinicia o melhor valor total a cada chamada
+        melhorCombinacao.clear();
 
-        // Não inclui o lance atual
-        melhorValor = backtracking(lances, energiaRestante, valorAtual, melhorValor, indiceAtual + 1,
-                combinacaoAtual);
+        // Ordena os lances por energia (crescente)
+        Collections.sort(lances, Comparator.comparingInt(Lance::getEnergia));
+
+        backtracking(lances, energiaTotal, 0, 0, new ArrayList<>());
+        return melhorValorTotal;
+    }
+
+    private void backtracking(List<Lance> lances, int energiaRestante, int valorAtual, int indiceAtual,
+            List<Lance> combinacaoAtual) {
+        if (indiceAtual >= lances.size() || energiaRestante < 0) {
+            if (valorAtual > melhorValorTotal && energiaRestante >= 0) {
+                melhorCombinacao = new ArrayList<>(combinacaoAtual);
+                melhorValorTotal = valorAtual;
+            }
+            return;
+        }
 
         Lance lance = lances.get(indiceAtual);
 
-        // Inclui o lance atual se a energia permitir
-        if (lance.getEnergia() <= energiaRestante) {
-            combinacaoAtual.add(lance);
-            melhorValor = backtracking(lances, energiaRestante - lance.getEnergia(),
-                    valorAtual + lance.getValor(), melhorValor, indiceAtual + 1, combinacaoAtual);
-            combinacaoAtual.remove(combinacaoAtual.size() - 1);
+        // Poda: se a energia do lance atual é maior que a energia restante, não precisa
+        // continuar
+        if (lance.getEnergia() > energiaRestante) {
+            return;
         }
 
-        return melhorValor;
+        // Não inclui o lance atual
+        backtracking(lances, energiaRestante, valorAtual, indiceAtual + 1, combinacaoAtual);
+
+        // Inclui o lance atual
+        combinacaoAtual.add(lance);
+        backtracking(lances, energiaRestante - lance.getEnergia(), valorAtual + lance.getValor(), indiceAtual + 1,
+                combinacaoAtual);
+        combinacaoAtual.remove(combinacaoAtual.size() - 1);
     }
 
     public void imprimirMelhorCombinacao() {
@@ -42,8 +54,25 @@ public class Backtracking {
             System.out.println("Nenhum lance selecionado.");
         } else {
             for (Lance lance : melhorCombinacao) {
-                System.out.println("- Energia: " + lance.getEnergia() + ", Valor: " + lance.getValor());
+                System.out
+                        .println("- Energia: " + lance.getEnergia() + " MW, Valor: " + lance.getValor() + " dinheiros");
             }
         }
+    }
+
+    public List<Lance> getMelhorCombinacao() {
+        return melhorCombinacao;
+    }
+
+    public int getEnergiaTotalMelhorCombinacao() {
+        int energiaTotal = 0;
+        for (Lance lance : melhorCombinacao) {
+            energiaTotal += lance.getEnergia();
+        }
+        return energiaTotal;
+    }
+
+    public int getMelhorValor() {
+        return melhorValorTotal;
     }
 }
