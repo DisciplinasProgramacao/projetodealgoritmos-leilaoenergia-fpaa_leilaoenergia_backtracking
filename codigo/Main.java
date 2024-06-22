@@ -26,45 +26,75 @@ public class Main {
                 opcao2 = scanner.nextInt();
                 switch (opcao2) {
                     case 1:
+                        // Cria uma nova instância da classe Backtracking
                         Backtracking backtracking = new Backtracking();
                         double timeElapsed;
-                        for (int i = 10;; i++) { // Loop infinito que só termina quando o tempo de execução
-                                                 // ultrapassa 30 segundos
-                            lances = new ArrayList<>();
-                            for (int j = 0; j < i; j++) {
-                                int energia = 100 + random.nextInt(400);
-                                int valor = 1000 + random.nextInt(1000);
-                                lances.add(new Lance(energia, valor));
+
+                        // Loop externo: começa com 10 lances e incrementa de 1 em 1 até que o tempo
+                        // médio de execução ultrapasse 30 segundos
+                        for (int i = 10;; i++) {
+                            // Lista para armazenar os tempos de execução de cada teste
+                            List<Double> times = new ArrayList<>();
+
+                            // Loop interno: repete o teste 10 vezes para cada tamanho de conjunto
+                            for (int k = 0; k < 10; k++) {
+                                // Cria uma nova lista de lances
+                                lances = new ArrayList<>();
+
+                                // Adiciona 'i' lances à lista, cada um com energia e valor aleatórios
+                                for (int j = 0; j < i; j++) {
+                                    int energia = 100 + random.nextInt(400);
+                                    int valor = 1000 + random.nextInt(1000);
+                                    lances.add(new Lance(energia, valor));
+                                }
+
+                                // Registra o tempo de início do algoritmo
+                                long inicio = System.currentTimeMillis();
+
+                                // Executa o algoritmo
+                                backtracking.resolver(lances, energiaTotal);
+
+                                // Registra o tempo de fim do algoritmo
+                                long fim = System.currentTimeMillis();
+
+                                // Calcula o tempo de execução em segundos e adiciona à lista de tempos
+                                timeElapsed = (fim - inicio) / 1000.0;
+                                times.add(timeElapsed);
+
+                                // Se o tempo de execução ultrapassou 30 segundos, imprime uma mensagem e sai do
+                                // loop interno
+                                if (timeElapsed > 30.0) {
+                                    System.out.println(
+                                            "O algoritmo demorou mais de 30 segundos para resolver o problema com " + i
+                                                    + " lances.");
+                                    break;
+                                }
                             }
 
-                            long inicio = System.currentTimeMillis();
-                            backtracking.resolver(lances, energiaTotal);
-                            long fim = System.currentTimeMillis();
+                            // Calcula a média dos tempos de execução
+                            double averageTime = times.stream().mapToDouble(val -> val).average().orElse(0.0);
 
-                            timeElapsed = (fim - inicio) / 1000.0;
+                            // Imprime o tempo médio de execução
+                            System.out.println(
+                                    "Tempo médio de execução em segundos para " + i + " lances: " + averageTime);
 
-                            if (timeElapsed > 30.0) {
-                                System.out
-                                        .println(
-                                                "O algoritmo demorou mais de 30 segundos para resolver o problema com "
-                                                        + i + " lances.");
-                                break;
-                            }
-                            System.out
-                                    .println("Tempo de execução em segundos para " + i + " lances: " + timeElapsed);
-
+                            // Imprime os detalhes dos lances selecionados pelo algoritmo
                             System.out.println("Conjunto de lances selecionados:");
                             for (Lance lance : backtracking.getMelhorCombinacao()) {
                                 System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
                                         + lance.getValor() + " dinheiros");
                             }
+
+                            // Imprime o valor total gasto e a energia total obtida
                             System.out.println("Valor total gasto: " + backtracking.getMelhorValor());
                             System.out.println(
-                                    "Valor total de energia obtido: "
-                                            + backtracking.getEnergiaTotalMelhorCombinacao());
+                                    "Valor total de energia obtido: " + backtracking.getEnergiaTotalMelhorCombinacao());
 
+                            // Se o tempo médio de execução ultrapassou 30 segundos, sai do loop externo
+                            if (averageTime > 30.0) {
+                                break;
+                            }
                         }
-
                         break;
                     case 2:
 
