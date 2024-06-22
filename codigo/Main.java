@@ -114,7 +114,7 @@ public class Main {
                 backtracking.imprimirMelhorCombinacao();
                 break;
             case 2:
-                // Testando algoritmo guloso 1 (maior valor)
+                // Testando algoritmo guloso 1 (maior valor total)
                 Guloso algoritmoGuloso1 = new Guloso();
                 long inicioGuloso1 = System.currentTimeMillis();
                 int melhorValorGuloso1 = algoritmoGuloso1.resolverEstrategia1(lances, energiaTotal);
