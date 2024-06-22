@@ -99,7 +99,7 @@ public class Main {
                 }
             } while (opcao1 != 1 && opcao1 != 2);
 
-            int energiaTotal = 10000;// Quantidade X de energia, medida em megawatts, para vender;
+            int energiaTotal = 8000;// Quantidade X de energia, medida em megawatts, para vender;
 
             System.out.println("Escolha uma opção de algoritmo:");
             System.out.println("1. Backtracking");
