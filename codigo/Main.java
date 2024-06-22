@@ -7,11 +7,14 @@ public class Main {
         List<Lance> lances = new ArrayList<>();
         try (Scanner scanner = new Scanner(System.in)) {
             int opcao1;
+            // Seleção do Conjunto de empresas interessadas;
+            // Loop Do/While para prevenir que uma opção inválida seja selecionada;
             do {
                 System.out.println("Escolha um conjunto de empresas interessadas:");
                 System.out.println("1. Conjunto 1");
                 System.out.println("2. Conjunto 2");
                 opcao1 = scanner.nextInt();
+                // Conjunto de empresas interessadas 1;
                 if (opcao1 == 1) {
                     lances.add(new Lance(430, 1043));
                     lances.add(new Lance(428, 1188));
@@ -38,7 +41,9 @@ public class Main {
                     lances.add(new Lance(415, 1624));
                     lances.add(new Lance(387, 1280));
                     lances.add(new Lance(417, 1330));
-                } else if (opcao1 == 2) {
+                } 
+                // Conjunto de empresas interessadas 2;
+                else if (opcao1 == 2) {
                     lances.add(new Lance(430, 1043));
                     lances.add(new Lance(428, 1188));
                     lances.add(new Lance(410, 1565));
@@ -94,7 +99,7 @@ public class Main {
                 }
             } while (opcao1 != 1 && opcao1 != 2);
 
-            int energiaTotal = 8000;
+            int energiaTotal = 10000;// Quantidade X de energia, medida em megawatts, para vender;
 
             System.out.println("Escolha uma opção de algoritmo:");
             System.out.println("1. Backtracking");
@@ -103,10 +108,10 @@ public class Main {
             System.out.println("4. Divisão e conquista");
             System.out.println("5. Programação dinâmica");
             int opcao = scanner.nextInt();
-
+            // Switch para a escolha do Algoritmo;
             switch (opcao) {
                 case 1:
-                    // Testando backtracking
+                    // Testando backtracking;
                     Backtracking backtracking = new Backtracking();
                     long inicio = System.currentTimeMillis();
                     backtracking.resolver(lances, energiaTotal);
@@ -124,7 +129,7 @@ public class Main {
                     System.out.println("Tempo de execução em segundos: " + timeElapsed);
                     break;
                 case 2:
-                    // Testando algoritmo guloso 1 (maior valor total)
+                    // Testando algoritmo guloso 1 (maior valor total);
                     Guloso algoritmoGuloso1 = new Guloso();
                     long inicioGuloso1 = System.currentTimeMillis();
                     int melhorValorGuloso1 = algoritmoGuloso1.resolverEstrategia1(lances, energiaTotal);
@@ -133,7 +138,7 @@ public class Main {
                     System.out.println("Tempo de execução (Guloso 1): " + (fimGuloso1 - inicioGuloso1) + "ms");
                     break;
                 case 3:
-                    // Testando algoritmo guloso 2 (melhor razão valor/energia)
+                    // Testando algoritmo guloso 2 (melhor razão valor/energia);
                     Guloso algoritmoGuloso2 = new Guloso();
                     long inicioGuloso2 = System.currentTimeMillis();
                     int melhorValorGuloso2 = algoritmoGuloso2.resolverEstrategia2(lances, energiaTotal);
@@ -142,7 +147,7 @@ public class Main {
                     System.out.println("Tempo de execução (Guloso 2): " + (fimGuloso2 - inicioGuloso2) + "ms");
                     break;
                 case 4:
-                    // Testando divisão e conquista
+                    // Testando divisão e conquista;
                     DivConquista divisaoEConquista = new DivConquista();
                     long inicioDivConquista = System.currentTimeMillis();
                     int melhorValorDivisaoConquista = divisaoEConquista.resolver(lances, energiaTotal);
@@ -153,7 +158,7 @@ public class Main {
                                     + "ms");
                     break;
                 case 5:
-                    // Testando programação dinâmica
+                    // Testando programação dinâmica;
                     ProgDinamica programacaoDinamica = new ProgDinamica();
                     long inicioProgramacaoDinamica = System.currentTimeMillis();
                     int melhorValorProgramacaoDinamica = programacaoDinamica.resolver(lances, energiaTotal);
