@@ -25,7 +25,8 @@ public class Main {
                 opcao2 = scanner.nextInt();
                 switch (opcao2) {
                     case 1:
-                        for (int i = 10; i <= energiaTotal / 100; i++) {
+                        for (int i = 10;; i++) { // Loop infinito que só termina quando o tempo de execução ultrapassa
+                                                 // 30 segundos
                             lances = new ArrayList<>();
                             for (int j = 0; j < i; j++) {
                                 int energia = 100 + random.nextInt(400);
@@ -39,28 +40,26 @@ public class Main {
                             long fim = System.currentTimeMillis();
 
                             double timeElapsed = (fim - inicio) / 1000.0;
-                            System.out
-                                    .println("Tempo de execução em segundos para " + i + " lances: " + timeElapsed);
 
-                            // Imprimir o valor total gasto, o valor total de energia obtido e o conjunto de
-                            // lances selecionados
+                            if (timeElapsed > 30.0) {
+                                System.out
+                                        .println("O algoritmo demorou mais de 30 segundos para resolver o problema com "
+                                                + i + " lances.");
+                                break;
+                            }
+
+                            System.out.println("Tempo de execução em segundos para " + i + " lances: " + timeElapsed);
                             System.out.println("Valor total gasto: " + backtracking.getMelhorValor());
-                            System.out.println("Valor total de energia obtido: "
-                                    + backtracking.getEnergiaTotalMelhorCombinacao());
+                            System.out.println(
+                                    "Valor total de energia obtido: " + backtracking.getEnergiaTotalMelhorCombinacao());
                             System.out.println("Conjunto de lances selecionados:");
                             for (Lance lance : backtracking.getMelhorCombinacao()) {
                                 System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
                                         + lance.getValor() + " dinheiros");
                             }
-
-                            if (timeElapsed > 30.0) {
-                                System.out.println(
-                                        "O algoritmo demorou mais de 30 segundos para resolver o problema com " + i
-                                                + " lances.");
-                                break;
-                            }
-                            break;
                         }
+                        break;
+
                     default:
                         break;
                 }
@@ -175,8 +174,8 @@ public class Main {
                     int melhorValorDivisaoConquista = divisaoEConquista.resolver(lances, energiaTotal);
                     long fimDivConquista = System.currentTimeMillis();
                     System.out.println("Melhor valor obtido (Divisão e Conquista): " + melhorValorDivisaoConquista);
-                    System.out.println("Tempo de execução (Divisão e Conquista): " 
-                    + (fimDivConquista - inicioDivConquista) + "ms");
+                    System.out.println("Tempo de execução (Divisão e Conquista): "
+                            + (fimDivConquista - inicioDivConquista) + "ms");
                     break;
                 case 5:
                     // Testando programação dinâmica;
@@ -186,7 +185,7 @@ public class Main {
                     long fimProgramacaoDinamica = System.currentTimeMillis();
                     System.out.println("Melhor valor obtido (Programação Dinâmica): " + melhorValorProgramacaoDinamica);
                     System.out.println("Tempo de execução (Programação Dinâmica): "
-                    + (fimProgramacaoDinamica - inicioProgramacaoDinamica) + "ms");
+                            + (fimProgramacaoDinamica - inicioProgramacaoDinamica) + "ms");
                     break;
                 default:
                     System.out.println("Opção inválida.");
