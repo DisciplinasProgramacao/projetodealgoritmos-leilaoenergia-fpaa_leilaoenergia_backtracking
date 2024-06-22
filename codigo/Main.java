@@ -29,8 +29,7 @@ public class Main {
                         Backtracking backtracking = new Backtracking();
                         double timeElapsed;
                         for (int i = 10;; i++) { // Loop infinito que só termina quando o tempo de execução
-                                                 // ultrapassa
-                            // 30 segundos
+                                                 // ultrapassa 30 segundos
                             lances = new ArrayList<>();
                             for (int j = 0; j < i; j++) {
                                 int energia = 100 + random.nextInt(400);
