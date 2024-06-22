@@ -1,12 +1,6 @@
 import java.util.*;
 
 public class Main {
-    // Conjunto de empresas interessadas 2;
-    static List<Lance> EmpresasInteressadas2(List<Lance> lances) {
-
-        return lances;
-    }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<Lance> lances = new ArrayList<>();
