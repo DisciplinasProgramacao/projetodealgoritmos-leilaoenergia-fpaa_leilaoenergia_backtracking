@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Backtracking {
     public List<Lance> melhorCombinacao;
-    public int melhorValorTotal; // Atributo para armazenar o melhor valor total
+    public int melhorValorTotal; // Atributo para armazenar o melhor valor total;
 
     public Backtracking() {
         this.melhorCombinacao = new ArrayList<>();
@@ -10,10 +10,10 @@ public class Backtracking {
     }
 
     public int resolver(List<Lance> lances, int energiaTotal) {
-        melhorValorTotal = 0; // Reinicia o melhor valor total a cada chamada
+        melhorValorTotal = 0; // Reinicia o melhor valor total a cada chamada;
         melhorCombinacao.clear();
 
-        // Ordena os lances por energia (crescente)
+        // Ordena os lances por energia (crescente);
         Collections.sort(lances, Comparator.comparingInt(Lance::getEnergia));
 
         backtracking(lances, energiaTotal, 0, 0, new ArrayList<>());
@@ -32,16 +32,16 @@ public class Backtracking {
 
         Lance lance = lances.get(indiceAtual);
 
-        // Poda: se a energia do lance atual é maior que a energia restante, não precisa
-        // continuar
+        // Poda: se a energia do lance atual é maior que a energia restante, não precisa;
+        // continuar;
         if (lance.getEnergia() > energiaRestante) {
             return;
         }
 
-        // Não inclui o lance atual
+        // Não inclui o lance atual;
         backtracking(lances, energiaRestante, valorAtual, indiceAtual + 1, combinacaoAtual);
 
-        // Inclui o lance atual
+        // Inclui o lance atual;
         combinacaoAtual.add(lance);
         backtracking(lances, energiaRestante - lance.getEnergia(), valorAtual + lance.getValor(), indiceAtual + 1,
                 combinacaoAtual);

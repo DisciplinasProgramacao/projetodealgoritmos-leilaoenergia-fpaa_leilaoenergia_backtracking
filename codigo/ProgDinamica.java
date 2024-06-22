@@ -1,8 +1,8 @@
 import java.util.List;
 public class ProgDinamica {
-
+    // Método para resolver o problema utilizando programação dinâmica;
     public int resolver(List<Lance> lances, int energiaTotal) {
-        int n = lances.size();
+        int n = lances.size();// Número total de lances;
         int[][] dp = new int[n + 1][energiaTotal + 1];
 
         for (int i = 1; i <= n; i++) {

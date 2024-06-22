@@ -17,7 +17,7 @@ public class Lance {
         return valor;
     }
 
-    // toString();
+    // Imprime os valores do lance na forma de uma String;
     @Override
     public String toString() {
         return "Lance{" +
