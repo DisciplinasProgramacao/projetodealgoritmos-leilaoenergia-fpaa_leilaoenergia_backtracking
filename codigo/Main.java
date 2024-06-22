@@ -1,15 +1,6 @@
 import java.util.*;
 
 public class Main {
-    private static List<Lance> gerarLancesAleatorios(int tamanho, Random random) {
-        List<Lance> lances = new ArrayList<>();
-        for (int j = 0; j < tamanho; j++) {
-            int energia = 100 + random.nextInt(400);
-            int valor = 1000 + random.nextInt(1000);
-            lances.add(new Lance(energia, valor));
-        }
-        return lances;
-    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<Lance> lances = new ArrayList<>();
@@ -50,10 +41,11 @@ public class Main {
                                 // Cria uma nova lista de lances
                                 lances = new ArrayList<>();
 
-                                // Adiciona 'i' lances à lista, cada um com energia e valor aleatórios
+                                // Adiciona 'i' lances à lista, cada um com energia e valor baseados no índice
+                                // do loop
                                 for (int j = 0; j < i; j++) {
-                                    int energia = 100 + random.nextInt(400);
-                                    int valor = 1000 + random.nextInt(1000);
+                                    int energia = 100 + j * 10; // Energia aumenta em 10 para cada lance
+                                    int valor = 1000 + j * 100; // Valor aumenta em 100 para cada lance
                                     lances.add(new Lance(energia, valor));
                                 }
 
@@ -105,35 +97,36 @@ public class Main {
                             }
                         }
                         break;
-                        case 2:
-                            // Algoritmo guloso 1
-                            for (int t = 10; t <= 100; t += 10) {
-                                int totalValor = 0;
-                                double totalTempo = 0.0;
-                                for (int k = 0; k < 10; k++) {
-                                    lances = gerarLancesAleatorios(t, random);
-                                    Guloso algoritmoGuloso1 = new Guloso();
-                                    long inicioGuloso1 = System.currentTimeMillis();
-                                    int melhorValorGuloso1 = 
-                                    algoritmoGuloso1.resolverEstrategia1(lances, energiaTotal);
-                                    long fimGuloso1 = System.currentTimeMillis();
-                                    totalValor += melhorValorGuloso1;
-                                    totalTempo += (fimGuloso1 - inicioGuloso1) / 1000.0;
-                                }
-                                double mediaValor = totalValor / 10.0;
-                                double mediaTempo = totalTempo / 10.0;
-                                System.out.println("Tamanho do conjunto: " + t);
-                                System.out.println("Média do valor obtido (Guloso 1): " + mediaValor);
-                                System.out.println("Média do tempo de execução (Guloso 1): " + mediaTempo + "s");
-                            }
-                            break;
-                        case 3:
-                            // Algoritmo guloso 2
-                            for (int t = 10; t <= 100; t += 10) {
+                    case 2:
+                        // Algoritmo guloso 1
+                        for (int t = 10; t <= 100; t += 10) {
                             int totalValor = 0;
                             double totalTempo = 0.0;
                             for (int k = 0; k < 10; k++) {
-                                lances = gerarLancesAleatorios(t, random);
+                                // PARA DE CRIAR METODOS!!!!!! FAZ TUDO NO SWITCH
+                                // lances = gerarLancesAleatorios(t, random);
+                                Guloso algoritmoGuloso1 = new Guloso();
+                                long inicioGuloso1 = System.currentTimeMillis();
+                                int melhorValorGuloso1 = algoritmoGuloso1.resolverEstrategia1(lances, energiaTotal);
+                                long fimGuloso1 = System.currentTimeMillis();
+                                totalValor += melhorValorGuloso1;
+                                totalTempo += (fimGuloso1 - inicioGuloso1) / 1000.0;
+                            }
+                            double mediaValor = totalValor / 10.0;
+                            double mediaTempo = totalTempo / 10.0;
+                            System.out.println("Tamanho do conjunto: " + t);
+                            System.out.println("Média do valor obtido (Guloso 1): " + mediaValor);
+                            System.out.println("Média do tempo de execução (Guloso 1): " + mediaTempo + "s");
+                        }
+                        break;
+                    case 3:
+                        // Algoritmo guloso 2
+                        for (int t = 10; t <= 100; t += 10) {
+                            int totalValor = 0;
+                            double totalTempo = 0.0;
+                            for (int k = 0; k < 10; k++) {
+                                // PARA DE CRIAR METODOS!!!!!! FAZ TUDO NO SWITCH
+                                // lances = gerarLancesAleatorios(t, random);
                                 Guloso algoritmoGuloso2 = new Guloso();
                                 long inicioGuloso2 = System.currentTimeMillis();
                                 int melhorValorGuloso2 = algoritmoGuloso2.resolverEstrategia2(lances, energiaTotal);
@@ -146,81 +139,86 @@ public class Main {
                             System.out.println("Tamanho do conjunto: " + t);
                             System.out.println("Média do valor obtido (Guloso 2): " + mediaValor);
                             System.out.println("Média do tempo de execução (Guloso 2): " + mediaTempo + "s");
-                            }
-                            break;
-                        case 4:
-                        /*
-                        // Case 4: Divisão e Conquista
-                        for (int i = 10;; i++) {
-                            double totalTime = 0;
-                            DivConquista divisaoEConquista = new DivConquista();
-                            for (int test = 0; test < 10; test++) {
-                                lances = new ArrayList<>();
-                                for (int j = 0; j < i; j++) {
-                                    int energia = 100 + random.nextInt(400);
-                                    int valor = 1000 + random.nextInt(1000);
-                                    lances.add(new Lance(energia, valor));
-                                }
-                                long inicioDivConquista = System.currentTimeMillis();
-                                divisaoEConquista.resolver(lances, energiaTotal);
-                                long fimDivConquista = System.currentTimeMillis();
-                                totalTime += (fimDivConquista - inicioDivConquista) / 1000.0;
-                            }
-                            double averageTime = totalTime / 10.0;
-                            if (averageTime > 30.0) {
-                                System.out.println(
-                                "O algoritmo demorou mais de 30 segundos para resolver o problema com "
-                                + i + " lances.");
-                                break;
-                            }
-                            System.out.println("Tempo de execução médio em segundos para " + i + " lances: " + averageTime);
-                            System.out.println("Valor total gasto: " + divisaoEConquista.getMelhorValor());
-                            System.out.println("Valor total de energia obtido: "
-                            + divisaoEConquista.getEnergiaTotalMelhorCombinacao());
-                            System.out.println("Conjunto de lances selecionados:");
-                            for (Lance lance : divisaoEConquista.getMelhorCombinacao()) {
-                            System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
-                            + lance.getValor() + " dinheiros");}
-                        }*/
+                        }
                         break;
-                        case 5:
+                    case 4:
                         /*
-                            // Case 5: Programação Dinâmica
-                            for (int i = 10;; i++) {
-                                double totalTime = 0;
-                                ProgDinamica programacaoDinamica = new ProgDinamica();
-                                for (int test = 0; test < 10; test++) {
-                                    lances = new ArrayList<>();
-                                    for (int j = 0; j < i; j++) {
-                                        int energia = 100 + random.nextInt(400);
-                                        int valor = 1000 + random.nextInt(1000);
-                                        lances.add(new Lance(energia, valor));
-                                    }
-                                    long inicioProgDinamica = System.currentTimeMillis();
-                                    programacaoDinamica.resolver(lances, energiaTotal);
-                                    long fimProgDinamica = System.currentTimeMillis();
-                                    totalTime += (fimProgDinamica - inicioProgDinamica) / 1000.0;
-                                }
-                                double averageTime = totalTime / 10.0;
-                                if (averageTime > 30.0) {
-                                System.out.println(
-                                "O algoritmo demorou mais de 30 segundos para resolver o problema com "
-                                + i + " lances.");
-                                break;}
-                                System.out.println("Tempo de execução médio em segundos para " 
-                                + i + " lances: " + averageTime);
-                                System.out.println("Melhor valor obtido (Programação Dinâmica): " 
-                                + programacaoDinamica.getMelhorValor());
-                                System.out.println("Tempo de execução total (Programação Dinâmica): "
-                                + (totalTime) + "ms");
-                                System.out.println("Valor total de energia obtido (Programação Dinâmica): "
-                                + programacaoDinamica.getEnergiaTotalMelhorCombinacao());
-                                System.out.println("Conjunto de lances selecionados (Programação Dinâmica):");
-                                for (Lance lance : programacaoDinamica.getMelhorCombinacao()) {
-                                System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
-                                + lance.getValor() + " dinheiros");}
-                            }*/
-                            break;
+                         * // Case 4: Divisão e Conquista
+                         * for (int i = 10;; i++) {
+                         * double totalTime = 0;
+                         * DivConquista divisaoEConquista = new DivConquista();
+                         * for (int test = 0; test < 10; test++) {
+                         * lances = new ArrayList<>();
+                         * for (int j = 0; j < i; j++) {
+                         * int energia = 100 + random.nextInt(400);
+                         * int valor = 1000 + random.nextInt(1000);
+                         * lances.add(new Lance(energia, valor));
+                         * }
+                         * long inicioDivConquista = System.currentTimeMillis();
+                         * divisaoEConquista.resolver(lances, energiaTotal);
+                         * long fimDivConquista = System.currentTimeMillis();
+                         * totalTime += (fimDivConquista - inicioDivConquista) / 1000.0;
+                         * }
+                         * double averageTime = totalTime / 10.0;
+                         * if (averageTime > 30.0) {
+                         * System.out.println(
+                         * "O algoritmo demorou mais de 30 segundos para resolver o problema com "
+                         * + i + " lances.");
+                         * break;
+                         * }
+                         * System.out.println("Tempo de execução médio em segundos para " + i +
+                         * " lances: " + averageTime);
+                         * System.out.println("Valor total gasto: " +
+                         * divisaoEConquista.getMelhorValor());
+                         * System.out.println("Valor total de energia obtido: "
+                         * + divisaoEConquista.getEnergiaTotalMelhorCombinacao());
+                         * System.out.println("Conjunto de lances selecionados:");
+                         * for (Lance lance : divisaoEConquista.getMelhorCombinacao()) {
+                         * System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
+                         * + lance.getValor() + " dinheiros");}
+                         * }
+                         */
+                        break;
+                    case 5:
+                        /*
+                         * // Case 5: Programação Dinâmica
+                         * for (int i = 10;; i++) {
+                         * double totalTime = 0;
+                         * ProgDinamica programacaoDinamica = new ProgDinamica();
+                         * for (int test = 0; test < 10; test++) {
+                         * lances = new ArrayList<>();
+                         * for (int j = 0; j < i; j++) {
+                         * int energia = 100 + random.nextInt(400);
+                         * int valor = 1000 + random.nextInt(1000);
+                         * lances.add(new Lance(energia, valor));
+                         * }
+                         * long inicioProgDinamica = System.currentTimeMillis();
+                         * programacaoDinamica.resolver(lances, energiaTotal);
+                         * long fimProgDinamica = System.currentTimeMillis();
+                         * totalTime += (fimProgDinamica - inicioProgDinamica) / 1000.0;
+                         * }
+                         * double averageTime = totalTime / 10.0;
+                         * if (averageTime > 30.0) {
+                         * System.out.println(
+                         * "O algoritmo demorou mais de 30 segundos para resolver o problema com "
+                         * + i + " lances.");
+                         * break;}
+                         * System.out.println("Tempo de execução médio em segundos para "
+                         * + i + " lances: " + averageTime);
+                         * System.out.println("Melhor valor obtido (Programação Dinâmica): "
+                         * + programacaoDinamica.getMelhorValor());
+                         * System.out.println("Tempo de execução total (Programação Dinâmica): "
+                         * + (totalTime) + "ms");
+                         * System.out.println("Valor total de energia obtido (Programação Dinâmica): "
+                         * + programacaoDinamica.getEnergiaTotalMelhorCombinacao());
+                         * System.out.println("Conjunto de lances selecionados (Programação Dinâmica):"
+                         * );
+                         * for (Lance lance : programacaoDinamica.getMelhorCombinacao()) {
+                         * System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
+                         * + lance.getValor() + " dinheiros");}
+                         * }
+                         */
+                        break;
                     default:
                         System.out.println("Opção inválida.");
                         break;
