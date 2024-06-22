@@ -106,6 +106,7 @@ public class Main {
 
             switch (opcao) {
                 case 1:
+                    // Testando backtracking
                     Backtracking backtracking = new Backtracking();
                     long inicio = System.currentTimeMillis();
                     backtracking.resolver(lances, energiaTotal);
