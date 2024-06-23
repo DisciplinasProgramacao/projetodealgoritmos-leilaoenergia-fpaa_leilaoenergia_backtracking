@@ -300,18 +300,18 @@ public class Main {
                     case 1:
                         // Testando backtracking;
                         Backtracking backtracking = new Backtracking();
-                        long inicio = System.currentTimeMillis();
+                        long inicioBacktracking = System.currentTimeMillis();
                         backtracking.resolver(lances, energiaTotal);
                         int energiaTotalVendida = 0;
                         for (Lance lance : backtracking.getMelhorCombinacao()) {
                             energiaTotalVendida += lance.getEnergia();
                         }
                         backtracking.imprimirMelhorCombinacao();
-                        long fim = System.currentTimeMillis();
-                        System.out.println("Energia Total Vendida: " + energiaTotalVendida + " MW");
-                        System.out.println("Melhor Valor Obtido: " + backtracking.melhorValorTotal + " dinheiros");
-                        double timeElapsed = (fim - inicio) / 1000.0;
-                        System.out.println("Tempo de execução em segundos: " + timeElapsed);
+                        long fimBacktracking = System.currentTimeMillis();
+                        System.out.println("Energia Total Vendida (Backtracking): " + energiaTotalVendida + " MW");
+                        System.out.println("Melhor Valor Obtido (Backtracking): " + backtracking.melhorValorTotal + " dinheiros");
+                        double timeBacktracking = (fimBacktracking - inicioBacktracking) / 1000.0;
+                        System.out.println("Tempo de execução (Backtracking): " + timeBacktracking + " segundos");
                         break;
                     case 2:
                         // Testando algoritmo guloso 1 (maior valor total);
@@ -319,8 +319,9 @@ public class Main {
                         long inicioGuloso1 = System.currentTimeMillis();
                         int melhorValorGuloso1 = algoritmoGuloso1.resolverEstrategia1(lances, energiaTotal);
                         long fimGuloso1 = System.currentTimeMillis();
+                        double timeGuloso1 = (fimGuloso1 - inicioGuloso1) / 1000.0;
                         System.out.println("Melhor valor obtido (Guloso 1): " + melhorValorGuloso1 + " dinheiros");
-                        System.out.println("Tempo de execução (Guloso 1): " + (fimGuloso1 - inicioGuloso1) + "ms");
+                        System.out.println("Tempo de execução (Guloso 1): " + timeGuloso1 + " segundos");
                         break;
                     case 3:
                         // Testando algoritmo guloso 2 (melhor razão valor/energia);
@@ -328,8 +329,9 @@ public class Main {
                         long inicioGuloso2 = System.currentTimeMillis();
                         int melhorValorGuloso2 = algoritmoGuloso2.resolverEstrategia2(lances, energiaTotal);
                         long fimGuloso2 = System.currentTimeMillis();
+                        double timeGuloso2 = (fimGuloso2 - inicioGuloso2) / 1000.0;
                         System.out.println("Melhor valor obtido (Guloso 2): " + melhorValorGuloso2 + " dinheiros");
-                        System.out.println("Tempo de execução (Guloso 2): " + (fimGuloso2 - inicioGuloso2) + "ms");
+                        System.out.println("Tempo de execução (Guloso 2): " + timeGuloso2 + " segundos");
                         break;
                     case 4:
                         // Testando divisão e conquista;
@@ -337,10 +339,10 @@ public class Main {
                         long inicioDivConquista = System.currentTimeMillis();
                         int melhorValorDivisaoConquista = divisaoEConquista.resolver(lances, energiaTotal);
                         long fimDivConquista = System.currentTimeMillis();
+                        double timeDivConquista = (fimDivConquista - inicioDivConquista) / 1000.0;
                         System.out.println(
                         "Melhor valor obtido (Divisão e Conquista): " + melhorValorDivisaoConquista + " dinheiros");
-                        System.out.println("Tempo de execução (Divisão e Conquista): "
-                        + (fimDivConquista - inicioDivConquista) + "ms");
+                        System.out.println("Tempo de execução (Divisão e Conquista): " + timeDivConquista + " segundos");
                         break;
                     case 5:
                         // Testando programação dinâmica;
@@ -348,10 +350,11 @@ public class Main {
                         long inicioProgramacaoDinamica = System.currentTimeMillis();
                         int melhorValorProgramacaoDinamica = programacaoDinamica.resolver(lances, energiaTotal);
                         long fimProgramacaoDinamica = System.currentTimeMillis();
+                        double timeProgramacaoDinamica = (fimProgramacaoDinamica - inicioProgramacaoDinamica) / 1000.0;
                         System.out.println(
                         "Melhor valor obtido (Programação Dinâmica): " + melhorValorProgramacaoDinamica + " dinheiros");
                         System.out.println("Tempo de execução (Programação Dinâmica): "
-                        + (fimProgramacaoDinamica - inicioProgramacaoDinamica) + "ms");
+                        + timeProgramacaoDinamica + " segundos");
                         break;
                     default:
                         System.out.println("Opção inválida.");
@@ -360,7 +363,6 @@ public class Main {
                         break;
                 }
                 break;
-            // FINALIZA AQUI O CASE 2;
             default:
                 System.out.println("Opção inválida.");
                 scanner.close();
