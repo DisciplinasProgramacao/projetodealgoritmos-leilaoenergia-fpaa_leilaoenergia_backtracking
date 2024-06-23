@@ -305,13 +305,13 @@ public class Main {
                         long inicioProgramacaoDinamica = System.currentTimeMillis();
                         int[] melhorValorProgramacaoDinamica = programacaoDinamica.resolver(lances, energiaTotalAula);
                         long fimProgramacaoDinamica = System.currentTimeMillis();
-                        System.out.println(
-                                "Melhor valor obtido (Programação Dinâmica): " + melhorValorProgramacaoDinamica);
-                        System.out.println("Tempo de execução (Programação Dinâmica): "
-                                + (fimProgramacaoDinamica - inicioProgramacaoDinamica) + "ms");
-
+                        double timeProgramacaoDinamica = (fimProgramacaoDinamica - inicioProgramacaoDinamica) / 1000.0;
+                        // Imprime os valores;
+                        programacaoDinamica.imprimirMelhorCombinacao();
+                        System.out.println("Energia Total Vendida (Programação Dinâmica): " + resultadoProgramacaoDinamica[1] + " MW");
+                        System.out.println("Melhor valor obtido (Programação Dinâmica): " + resultadoProgramacaoDinamica[0] + " dinheiros");
+                        System.out.println("Tempo de execução (Programação Dinâmica): " + timeProgramacaoDinamica + " segundos");
                         break;
-
                     default:
                         System.out.println("Opção inválida.");
                         scanner.close();
