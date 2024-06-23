@@ -60,24 +60,24 @@ public class Main {
 
                 //GULOSO 1
                 System.out.println("GULOSO 1");
-                int size = conjuntoT.size();
-                List<List<Lance>> conjunto10T = duplicateListOfLists(conjuntoT);
-
-                for (int i = 0; i < 10; i++) {
-                    double tempoTotal = 0;
-                    for (List<Lance> list : conjunto10T) {
-                        long inicioGuloso1 = System.currentTimeMillis();
-                        int valorEstrategia = guloso.resolverEstrategia1(list, energiaTotal);
-                        long fimGuloso1 = System.currentTimeMillis();
-                        double tempo = (fimGuloso1 - inicioGuloso1) / 1000.0;
-                        tempoTotal += tempo;
-                    }
-                    System.out.println("Tempo medio para conjunto de " + size + ": " + tempoTotal/10);
-                    for (int j = 0; j < 10; j++) {
-                        conjunto10T.add(gerarConjuntoLances(size, random));
-                    }
-                    size *= 2;
-                }
+//                int size = conjuntoT.size();
+//                List<List<Lance>> conjunto10T = duplicateListOfLists(conjuntoT);
+//
+//                for (int i = 0; i < 10; i++) {
+//                    double tempoTotal = 0;
+//                    for (List<Lance> list : conjunto10T) {
+//                        long inicioGuloso1 = System.currentTimeMillis();
+//                        int valorEstrategia = guloso.resolverEstrategia1(list, energiaTotal);
+//                        long fimGuloso1 = System.currentTimeMillis();
+//                        double tempo = (fimGuloso1 - inicioGuloso1) / 1000.0;
+//                        tempoTotal += tempo;
+//                    }
+//                    System.out.println("Tempo medio para conjunto de " + size + ": " + tempoTotal/10);
+//                    for (int j = 0; j < 10; j++) {
+//                        conjunto10T.add(gerarConjuntoLances(size, random));
+//                    }
+//                    size *= 2;
+//                }
 
                 long inicioGuloso1 = System.currentTimeMillis();
                 for (int tamanho = 10; tamanho <= 100; tamanho += 10) {
