@@ -135,6 +135,7 @@ public class Main2 {
         return lances;
     }
     //**************************************************************************************/
+    // Testando backtracking;
     static void TesteBacktracking(List<Lance> lancesBacktracking){
         Backtracking backtracking = new Backtracking();
         long inicioBacktracking = System.currentTimeMillis();
@@ -149,8 +150,57 @@ public class Main2 {
         // Imprime os valores;
         System.out.println("Energia Total Vendida (Backtracking): " + energiaTotalBacktracking + " MW");
         System.out.println("Melhor Valor Obtido (Backtracking): " + backtracking.melhorValorTotal + " dinheiros");
-        System.out.println("Tempo de execução (Backtracking): " + timeBacktracking + " segundos");
+        System.out.println("Tempo de execução (Backtracking): " + timeBacktracking + " segundos\n");
     }
+    // Testando algoritmo guloso 1 (maior valor total);
+    static void TesteGuloso1(List<Lance> gulosoLances){
+        Guloso algoritmoGuloso1 = new Guloso();
+        long inicioGuloso1 = System.currentTimeMillis();
+        int melhorValorGuloso1 = algoritmoGuloso1.resolverEstrategia1(gulosoLances, energiaTotal);
+        long fimGuloso1 = System.currentTimeMillis();
+        double timeGuloso1 = (fimGuloso1 - inicioGuloso1) / 1000.0;
+        // Imprime os valores;
+        System.out.println("Melhor valor obtido (Guloso 1): " + melhorValorGuloso1 + " dinheiros");
+        System.out.println("Tempo de execução (Guloso 1): " + timeGuloso1 + " segundos\n");
+    }
+    // Testando algoritmo guloso 2 (melhor razão valor/energia);
+    static void TesteGuloso2(List<Lance> gulosoLances){
+        Guloso algoritmoGuloso2 = new Guloso();
+        long inicioGuloso2 = System.currentTimeMillis();
+        int melhorValorGuloso2 = algoritmoGuloso2.resolverEstrategia2(gulosoLances, energiaTotal);
+        long fimGuloso2 = System.currentTimeMillis();
+        double timeGuloso2 = (fimGuloso2 - inicioGuloso2) / 1000.0;
+        // Imprime os valores;
+        System.out.println("Melhor valor obtido (Guloso 2): " + melhorValorGuloso2 + " dinheiros");
+        System.out.println("Tempo de execução (Guloso 2): " + timeGuloso2 + " segundos\n");
+    }
+    // Testando divisão e conquista;
+    static void TesteDivConquista(List<Lance> divLances){
+        DivConquista divisaoEConquista = new DivConquista();
+        long inicioDivConquista = System.currentTimeMillis();
+        int[] resultadoDivConquista = divisaoEConquista.resolver(divLances, energiaTotal);
+        long fimDivConquista = System.currentTimeMillis();
+        double timeDivConquista = (fimDivConquista - inicioDivConquista) / 1000.0;
+        // Imprime os valores;
+        System.out.println("Energia Total Vendida (Divisão e Conquista): " + resultadoDivConquista[1] + " MW");
+        System.out.println("Melhor valor obtido (Divisão e Conquista): " + resultadoDivConquista[0] + " dinheiros");
+        System.out.println("Tempo de execução (Divisão e Conquista): " + timeDivConquista + " segundos\n");
+    }
+    // Testando programação dinâmica;
+    static void TesteProgDinamica(List<Lance> proLances){
+        ProgDinamica programacaoDinamica = new ProgDinamica();
+        long inicioProgramacaoDinamica = System.currentTimeMillis();
+        int[] resultadoProgramacaoDinamica = programacaoDinamica.resolver(proLances, energiaTotal);
+        long fimProgramacaoDinamica = System.currentTimeMillis();
+        double timeProgramacaoDinamica = (fimProgramacaoDinamica - inicioProgramacaoDinamica) / 1000.0;
+        // Imprime os valores;
+        programacaoDinamica.imprimirMelhorCombinacao();
+        System.out.println("Energia Total Vendida (Programação Dinâmica): " + resultadoProgramacaoDinamica[1] + " MW");
+        System.out.println("Melhor valor obtido (Programação Dinâmica): " + resultadoProgramacaoDinamica[0] + " dinheiros");
+        System.out.println("Tempo de execução (Programação Dinâmica): " + timeProgramacaoDinamica + " segundos\n");
+    }
+    //**************************************************************************************/
+    // Main do projeto;
     public static void main(String[] args){
         // Listas de lances;
         List<Lance> lancesBacktracking = new ArrayList<>();
@@ -169,13 +219,21 @@ public class Main2 {
         lancesInteressadas2 = preencherInteressadas2();
 
         // Realizando os Algoritmos;
-        // Testando backtracking;
-        TesteBacktracking(lancesBacktracking);
+        System.out.println("Empresas Interessadas 1");
         TesteBacktracking(lancesInteressadas1);
+        TesteGuloso1(lancesInteressadas1);
+        TesteGuloso2(lancesInteressadas1);
+        TesteDivConquista(lancesInteressadas1);
+        TesteProgDinamica(lancesInteressadas1);
+
+        System.out.println("Empresas Interessadas 2");
         TesteBacktracking(lancesInteressadas2);
-        // Testando algoritmo guloso 1 (maior valor total);
-        // Testando algoritmo guloso 2 (melhor razão valor/energia);
-        // Testando divisão e conquista;
-        // Testando programação dinâmica;
+        TesteGuloso1(lancesInteressadas2);
+        TesteGuloso2(lancesInteressadas2);
+        TesteDivConquista(lancesInteressadas2);
+        TesteProgDinamica(lancesInteressadas2);
+
+        System.out.println("Outros");
+
     }
 }

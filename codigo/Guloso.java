@@ -53,7 +53,6 @@ public class Guloso {
             System.out.println("  Energia: " + lance.getEnergia() + " MW, Valor: " + lance.getValor() + " reais, Valor por MW: " + ((double)lance.getValor() / lance.getEnergia()));
             energiaTotalGuloso1 += lance.getEnergia();
         }
-        System.out.println();
         System.out.println("Energia Total Vendida (Guloso " + num + "): " + energiaTotalGuloso1 + " MW");
     }
 }
