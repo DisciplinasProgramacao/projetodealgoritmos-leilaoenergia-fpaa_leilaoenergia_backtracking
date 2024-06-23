@@ -59,7 +59,7 @@ public class ProgDinamica {
      * Imprime a melhor combinação de lances encontrada.
      */
     public void imprimirMelhorCombinacao() {
-        System.out.println("\nMelhor Combinação de Lances:");
+        System.out.println("Lances Selecionados:");
         if (melhorCombinacao.isEmpty()) {
             System.out.println("Nenhum lance selecionado.");
         } else {
