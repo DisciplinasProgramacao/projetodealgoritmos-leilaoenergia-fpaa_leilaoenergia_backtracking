@@ -22,6 +22,7 @@ public class Main {
                 int energiaTotal = 15000;
 
                 //BACKTRACKING
+                System.out.println("BACKTRACKING");
                 Backtracking backtracking = new Backtracking();
                 List<List<Lance>> conjuntoAux = new ArrayList<>();
                 double tempoMedioFinal = 0;
@@ -48,20 +49,36 @@ public class Main {
                         conjuntoT = new ArrayList<>(conjuntoAux);
                         tempoMedioFinal = tempoMedio;
                     } else {
-
                         System.out.println("Tamanho conjunto: " + tamanhoConjunto + " Tempo médio: " + tempoMedioFinal);
-                        System.out.println("Conjunto de lances selecionados:");
-                        for (Lance lance : backtracking.getMelhorCombinacao()) {
-                            System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
-                                    + lance.getValor() + " dinheiros");
+                        for (List<Lance> list : conjuntoT) {
+                            backtracking.resolver(list, energiaTotal);
+                            System.out.println("Energia: " + backtracking.getEnergiaTotalMelhorCombinacao() + "Valor: " + backtracking.getMelhorValor());
                         }
-                        System.out.println("Valor total gasto: " + backtracking.getMelhorValor());
-                        System.out.println("Valor total de energia obtido: " + backtracking.getEnergiaTotalMelhorCombinacao());
                         break;
                     }
                 }
 
                 //GULOSO 1
+                System.out.println("GULOSO 1");
+                int size = conjuntoT.size();
+                List<List<Lance>> conjunto10T = duplicateListOfLists(conjuntoT);
+
+                for (int i = 0; i < 10; i++) {
+                    double tempoTotal = 0;
+                    for (List<Lance> list : conjunto10T) {
+                        long inicioGuloso1 = System.currentTimeMillis();
+                        int valorEstrategia = guloso.resolverEstrategia1(list, energiaTotal);
+                        long fimGuloso1 = System.currentTimeMillis();
+                        double tempo = (fimGuloso1 - inicioGuloso1) / 1000.0;
+                        tempoTotal += tempo;
+                    }
+                    System.out.println("Tempo medio para conjunto de " + size + ": " + tempoTotal/10);
+                    for (int j = 0; j < 10; j++) {
+                        conjunto10T.add(gerarConjuntoLances(size, random));
+                    }
+                    size *= 2;
+                }
+
                 long inicioGuloso1 = System.currentTimeMillis();
                 for (int tamanho = 10; tamanho <= 100; tamanho += 10) {
                     System.out.println("Tamanho do conjunto de lances: " + tamanho);
@@ -95,6 +112,7 @@ public class Main {
                 }
 
                 //GULOSO 2
+                System.out.println("GULOSO 2");
                 long inicioGuloso2 = System.currentTimeMillis();
                 for (int tamanho = 10; tamanho <= 100; tamanho += 10) {
                     System.out.println("Tamanho do conjunto de lances: " + tamanho);
@@ -127,6 +145,7 @@ public class Main {
                 }
 
                 //DIVISÃO E CONQUISTA
+                System.out.println("DIVISÃO E CONQUISTA");
                 DivConquista divisaoEConquista = new DivConquista();
                 double tempoMedioDC = 0;
                 int[] melhorValorDivisaoConquista = new int[0];
@@ -142,12 +161,18 @@ public class Main {
                         + tempoMedioDC + "ms");
 
                 //PROGRAMAÇÃO DINAMICA
-                ProgDinamica pd = new ProgDinamica();
-                long inicioPd = System.currentTimeMillis();
-                int[] resultado = pd.resolver(lances, energiaTotal);
-                long fimPd = System.currentTimeMillis();
-                System.out.println("Melhor valor Programação Dinamica: " + resultado[0]);
-                System.out.println("Energia total vendida Programação Dinamica: " + resultado[1]);
+                System.out.println("PROGRAMAÇÃO DINAMICA");
+                double tempoPd = 0;
+                for (List<Lance> list : conjuntoT) {
+                    ProgDinamica pd = new ProgDinamica();
+                    long inicioPd = System.currentTimeMillis();
+                    int[] resultado = pd.resolver(list, energiaTotal);
+                    long fimPd = System.currentTimeMillis();
+                    tempoPd = (fimPd - inicioPd) / 1000.0;
+                    System.out.println("Energia: " + resultado[1] + "Melhor valor PD: " + resultado[0]);
+                }
+                System.out.println("Tempo médio: " + tempoPd/10);
+
 
                 break;
             case 2:
@@ -312,5 +337,14 @@ public class Main {
             lances.add(new Lance(energia, valor));
         }
         return lances;
+    }
+
+    public static <T> List<List<T>> duplicateListOfLists(List<List<T>> originalList) {
+        List<List<T>> newList = new ArrayList<>();
+        for (List<T> sublist : originalList) {
+            List<T> newSublist = new ArrayList<>(sublist);
+            newList.add(newSublist);
+        }
+        return newList;
     }
 }
