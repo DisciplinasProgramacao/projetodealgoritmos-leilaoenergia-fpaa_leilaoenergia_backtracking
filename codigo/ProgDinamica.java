@@ -1,7 +1,8 @@
 import java.util.List;
+
 public class ProgDinamica {
     // Método para resolver o problema utilizando programação dinâmica;
-    public int resolver(List<Lance> lances, int energiaTotal) {
+    public int[] resolver(List<Lance> lances, int energiaTotal) {
         int n = lances.size(); // Número total de lances;
         int[][] dp = new int[n + 1][energiaTotal + 1]; // Matriz dp para armazenar os valores máximos;
 
@@ -18,7 +19,22 @@ public class ProgDinamica {
             }
         }
         
-        // Retorna o valor máximo possível com a energia disponível;
-        return dp[n][energiaTotal];
+        // Recuperar o valor máximo obtido e a energia total vendida;
+        int melhorValor = dp[n][energiaTotal];
+        int energiaTotalVendida = 0;
+        int energiaRestante = energiaTotal;
+        int Valor = melhorValor;
+
+        // Determinar quais lances foram selecionados para atingir o valor máximo;
+        for (int i = n; i > 0 && melhorValor > 0; i--) {
+            if (Valor != dp[i - 1][energiaRestante]) {
+                // O lance atual (lances.get(i - 1)) foi incluído na solução ótima;
+                energiaTotalVendida += lances.get(i - 1).getEnergia();
+                Valor -= lances.get(i - 1).getValor();
+                energiaRestante -= lances.get(i - 1).getEnergia();
+            }
+        }
+
+        return new int[] { melhorValor, energiaTotalVendida };
     }
 }

@@ -348,21 +348,18 @@ public class Main {
                         System.out.println("Melhor valor obtido (Divisão e Conquista): " + resultadoDivConquista[0] + " dinheiros");
                         System.out.println("Tempo de execução (Divisão e Conquista): " + timeDivConquista + " segundos");
                         break;
-                    case 5:
+                        case 5:
                         // Testando programação dinâmica;
                         ProgDinamica programacaoDinamica = new ProgDinamica();
                         long inicioProgramacaoDinamica = System.currentTimeMillis();
-                        int melhorValorProgramacaoDinamica = programacaoDinamica.resolver(lances, energiaTotal);
+                        int[] resultadoProgramacaoDinamica = programacaoDinamica.resolver(lances, energiaTotal);
                         long fimProgramacaoDinamica = System.currentTimeMillis();
                         double timeProgramacaoDinamica = (fimProgramacaoDinamica - inicioProgramacaoDinamica) / 1000.0;
                         // Imprime os valores;
-                        //System.out.println("Energia Total Vendida (Programação Dinâmica): " + 
-                        //energiaTotalprogramacaoDinamica + " MW");
-                        System.out.println("Melhor valor obtido (Programação Dinâmica): " 
-                        + melhorValorProgramacaoDinamica + " dinheiros");
-                        System.out.println("Tempo de execução (Programação Dinâmica): " 
-                        + timeProgramacaoDinamica + " segundos");
-                        break;
+                        System.out.println("Energia Total Vendida (Programação Dinâmica): " + resultadoProgramacaoDinamica[1] + " MW");
+                        System.out.println("Melhor valor obtido (Programação Dinâmica): " + resultadoProgramacaoDinamica[0] + " dinheiros");
+                        System.out.println("Tempo de execução (Programação Dinâmica): " + timeProgramacaoDinamica + " segundos");
+                        break;                    
                     default:
                         System.out.println("Opção inválida.");
                         scanner.close();
