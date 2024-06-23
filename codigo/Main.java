@@ -44,8 +44,8 @@ public class Main {
                                 // Adiciona 'i' lances à lista, cada um com energia e valor baseados no índice
                                 // do loop
                                 for (int j = 0; j < i; j++) {
-                                    int energia = 100 + j * 10; // Energia aumenta em 10 para cada lance
-                                    int valor = 1000 + j * 100; // Valor aumenta em 100 para cada lance
+                                    int energia = 100 + random.nextInt(400);
+                                    int valor = 1000 + random.nextInt(1000);
                                     lances.add(new Lance(energia, valor));
                                 }
 
@@ -61,15 +61,6 @@ public class Main {
                                 // Calcula o tempo de execução em segundos e adiciona à lista de tempos
                                 timeElapsed = (fim - inicio) / 1000.0;
                                 times.add(timeElapsed);
-
-                                // Se o tempo de execução ultrapassou 30 segundos, imprime uma mensagem e sai do
-                                // loop interno
-                                if (timeElapsed > 30.0) {
-                                    System.out.println(
-                                            "O algoritmo demorou mais de 30 segundos para resolver o problema com " + i
-                                                    + " lances.");
-                                    break;
-                                }
                             }
 
                             // Calcula a média dos tempos de execução
@@ -93,6 +84,9 @@ public class Main {
 
                             // Se o tempo médio de execução ultrapassou 30 segundos, sai do loop externo
                             if (averageTime > 30.0) {
+                                System.out.println(
+                                        "O algoritmo demorou mais de 30 segundos em média para resolver o problema com "
+                                                + i + " lances.");
                                 break;
                             }
                         }
