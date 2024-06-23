@@ -16,7 +16,7 @@ public class Main {
         double tempoMedioFinal = 0;
         double tempoMedio = 0;
         int tamanhoConjunto = 10;
-        int tamanhoConjuntoFinal = 0;  // Armazenar o tamanho do conjunto;
+        int tamanhoConjuntoFinal = 0;  // Armazenar o tamanho do conjunto
 
         while (true) {
             double tempoTeste = 0;
@@ -34,7 +34,7 @@ public class Main {
             if (tempoMedio < 30.0) {
                 tamanhoConjunto += 1;
                 conjuntoT = new ArrayList<>(conjuntoAux);
-                tamanhoConjuntoFinal = tamanhoConjunto; // Salvar o tamanho do conjunto;
+                tamanhoConjuntoFinal = tamanhoConjunto - 1; // Salvar o tamanho do conjunto
                 tempoMedioFinal = tempoMedio;
             } else {
                 System.out.println("Tamanho conjunto: " + tamanhoConjuntoFinal + " Tempo médio: " + tempoMedioFinal);
@@ -42,7 +42,7 @@ public class Main {
                     backtracking.resolver(list, energiaTotal);
                     System.out.println("Energia: " + backtracking.getEnergiaTotalMelhorCombinacao() + " Valor: " + backtracking.getMelhorValor());
                 }
-                break; // Sair do loop após encontrar o tamanho adequado;
+                break; // Sair do loop após encontrar o tamanho adequado
             }
         }
 
@@ -53,7 +53,7 @@ public class Main {
             System.out.println("==============================");
             double mediaValor = 0;
             for (int teste = 0; teste < 10; teste++) {
-                // Utilizar o mesmo conjunto de lances do tamanho T e aumentar gradualmente;
+                // Utilizar o mesmo conjunto de lances do tamanho T e aumentar gradualmente
                 List<Lance> lancesTeste = gerarConjuntoLances(tamanho, random);
                 int valorEstrategia = guloso.resolverEstrategia1(new ArrayList<>(lancesTeste), energiaTotal);
                 mediaValor += valorEstrategia;
@@ -74,7 +74,7 @@ public class Main {
             System.out.println("==============================");
             double mediaValor = 0;
             for (int teste = 0; teste < 10; teste++) {
-                // Utilizar o mesmo conjunto de lances do tamanho T e aumentar gradualmente;
+                // Utilizar o mesmo conjunto de lances do tamanho T e aumentar gradualmente
                 List<Lance> lancesTeste = gerarConjuntoLances(tamanho, random);
                 int valorEstrategia = guloso1.resolverEstrategia2(new ArrayList<>(lancesTeste), energiaTotal);
                 mediaValor += valorEstrategia;
@@ -105,35 +105,31 @@ public class Main {
         // PROGRAMAÇÃO DINAMICA
         System.out.println("PROGRAMAÇÃO DINAMICA");
         double tempoPd = 0;
-        for (List<Lance> list : conjuntoT) {
-            ProgDinamica pd = new ProgDinamica();
-            long inicioPd = System.currentTimeMillis();
-            int[] resultado = pd.resolver(list, energiaTotal);
-            long fimPd = System.currentTimeMillis();
-            tempoPd = (fimPd - inicioPd) / 1000.0;
-            System.out.println("Energia: " + resultado[1] + " Melhor valor PD: " + resultado[0]);
+        for (int tamanho = tamanhoConjuntoFinal; tamanho <= tamanhoConjuntoFinal * 10; tamanho += tamanhoConjuntoFinal) {
+            for (int teste = 0; teste < 10; teste++) {
+                List<Lance> lancesTeste = gerarConjuntoLances(tamanho, random);
+                ProgDinamica pd = new ProgDinamica();
+                long inicioPd = System.currentTimeMillis();
+                int[] resultado = pd.resolver(lancesTeste, energiaTotal);
+                long fimPd = System.currentTimeMillis();
+                tempoPd += (fimPd - inicioPd) / 1000.0;
+                System.out.println("Energia: " + resultado[1] + " Melhor valor PD: " + resultado[0]);
+            }
+            System.out.println("Tempo médio para conjunto de " + tamanho + ": " + (tempoPd / 10) + "s");
+            tempoPd = 0; // Resetar tempo médio para o próximo tamanho
         }
-        System.out.println("Tempo médio: " + tempoPd / 10);
 
         scanner.close();
     }
 
-    // Função para gerar um conjunto de lances aleatórios;
+    // Função para gerar um conjunto de lances aleatórios
     private static List<Lance> gerarConjuntoLances(int tamanho, Random random) {
         List<Lance> lances = new ArrayList<>();
         for (int i = 0; i < tamanho; i++) {
-            int energia = random.nextInt(100) + 1; // Energia entre 1 e 100 MW;
-            int valor = random.nextInt(2000) + 1; // Valor entre 1 e 2000 reais;
+            int energia = random.nextInt(100) + 1; // Energia entre 1 e 100 MW
+            int valor = random.nextInt(2000) + 1; // Valor entre 1 e 2000 reais
             lances.add(new Lance(energia, valor));
         }
         return lances;
-    }
-    public static <T> List<List<T>> duplicateListOfLists(List<List<T>> originalList) {
-        List<List<T>> newList = new ArrayList<>();
-        for (List<T> sublist : originalList) {
-            List<T> newSublist = new ArrayList<>(sublist);
-            newList.add(newSublist);
-        }
-        return newList;
     }
 }
