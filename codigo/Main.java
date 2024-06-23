@@ -340,12 +340,12 @@ public class Main {
                         // Testando divisão e conquista;
                         DivConquista divisaoEConquista = new DivConquista();
                         long inicioDivConquista = System.currentTimeMillis();
-                        int melhorValorDivisaoConquista = divisaoEConquista.resolver(lances, energiaTotal);
+                        int[] resultadoDivConquista = divisaoEConquista.resolver(lances, energiaTotal);
                         long fimDivConquista = System.currentTimeMillis();
                         double timeDivConquista = (fimDivConquista - inicioDivConquista) / 1000.0;
                         // Imprime os valores;
-                        //System.out.println("Energia Total Vendida (Divisão e Conquista): " + energiaTotalDivConquista + " MW");
-                        System.out.println("Melhor valor obtido (Divisão e Conquista): " + melhorValorDivisaoConquista + " dinheiros");
+                        System.out.println("Energia Total Vendida (Divisão e Conquista): " + resultadoDivConquista[1] + " MW");
+                        System.out.println("Melhor valor obtido (Divisão e Conquista): " + resultadoDivConquista[0] + " dinheiros");
                         System.out.println("Tempo de execução (Divisão e Conquista): " + timeDivConquista + " segundos");
                         break;
                     case 5:
