@@ -185,9 +185,9 @@ public class Main2 {
      * Em seguida, aumente os tamanhos dos conjuntos de T em T até atingir o tamanho 10T,
      * sempre executando 10 testes de cada tamanho para utilizar a média.
      */
-    static List<List<Lance>> preencherGuloso(List<List<Lance>> lancesBacktracking){
+    /*static List<List<Lance>> preencherGuloso(List<List<Lance>> lancesBacktracking){
 
-    }
+    }*/
     //**************************************************************************************/
     // Main do projeto;
     public static void main(String[] args){
@@ -209,7 +209,7 @@ public class Main2 {
             case 1:
                 // Preencher as listas segundo os requisitos pedidos;
                 lancesBacktracking = preencherBacktracking();
-                lancesGuloso = preencherGuloso(lancesBacktracking);
+                //lancesGuloso = preencherGuloso(lancesBacktracking);
                 lancesDivConquista = lancesBacktracking;
                 lancesProgDinamica = lancesGuloso;
             break;
