@@ -322,7 +322,6 @@ public class Main {
                         long fimGuloso1 = System.currentTimeMillis();
                         double timeGuloso1 = (fimGuloso1 - inicioGuloso1) / 1000.0;
                         // Imprime os valores;
-                        //System.out.println("Energia Total Vendida (Guloso 1): " + energiaTotalGuloso1 + " MW");
                         System.out.println("Melhor valor obtido (Guloso 1): " + melhorValorGuloso1 + " dinheiros");
                         System.out.println("Tempo de execução (Guloso 1): " + timeGuloso1 + " segundos");
                         break;
@@ -334,7 +333,6 @@ public class Main {
                         long fimGuloso2 = System.currentTimeMillis();
                         double timeGuloso2 = (fimGuloso2 - inicioGuloso2) / 1000.0;
                         // Imprime os valores;
-                        //System.out.println("Energia Total Vendida (Guloso 2): " + energiaTotalGuloso2 + " MW");
                         System.out.println("Melhor valor obtido (Guloso 2): " + melhorValorGuloso2 + " dinheiros");
                         System.out.println("Tempo de execução (Guloso 2): " + timeGuloso2 + " segundos");
                         break;
