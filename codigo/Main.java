@@ -38,7 +38,7 @@ public class Main {
                             double totalTempo = 0.0;
 
                             // Loop interno: repete o teste 10 vezes para cada tamanho de conjunto
-                            for (int k = 0; k < 10; k++) {
+                            for (int k = 0; k < i; k++) {
                                 // Cria uma nova lista de lances
                                 lances = new ArrayList<>();
 
