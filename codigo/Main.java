@@ -16,6 +16,7 @@ public class Main {
         System.out.println("2. Conjunto empresas interessadas");
         opcao1 = scanner.nextInt();
         switch (opcao1) {
+            // INICIA AQUI O CASE 1;
             case 1:
                 System.out.println("Escolha uma opção de algoritmo:");
                 System.out.println("1. Backtracking");
@@ -215,19 +216,21 @@ public class Main {
                         break;
                     default:
                         System.out.println("Opção inválida.");
+                        scanner.close();
+                        System.exit(0);
                         break;
                 }
-                break;
-            // FINALIZA AQUI O CASE 1
-            // INICIA AQUI O CASE 2
+            break;
+            // FINALIZA AQUI O CASE 1;
+            // INICIA AQUI O CASE 2;
             case 2:
                 System.out.println("Escolha um conjunto de empresas interessadas: ");
                 System.out.println("1. Conjunto 1");
                 System.out.println("2. Conjunto 2");
                 opcao4 = scanner.nextInt();
-
+                
+                // Conjunto de empresas interessadas 1;
                 if (opcao4 == 1) {
-                    // Conjunto de empresas interessadas 1
                     lances.add(new Lance(430, 1043));
                     lances.add(new Lance(428, 1188));
                     lances.add(new Lance(410, 1565));
@@ -254,7 +257,7 @@ public class Main {
                     lances.add(new Lance(387, 1280));
                     lances.add(new Lance(417, 1330));
                 } else if (opcao4 == 2) {
-                    // Conjunto de empresas interessadas 2
+                    // Conjunto de empresas interessadas 2;
                     lances.add(new Lance(313, 1496));
                     lances.add(new Lance(398, 1768));
                     lances.add(new Lance(240, 1210));
@@ -282,6 +285,9 @@ public class Main {
                     lances.add(new Lance(476, 2480));
                 } else {
                     System.out.println("Opção inválida.");
+                    scanner.close();
+                    System.exit(0);
+                    break;
                 }
                 // Escolha do algoritmo;
                 System.out.println("Escolha uma opção de algoritmo:");
@@ -307,7 +313,6 @@ public class Main {
                         System.out.println("Melhor Valor Obtido: " + backtracking.melhorValorTotal + " dinheiros");
                         double timeElapsed = (fim - inicio) / 1000.0;
                         System.out.println("Tempo de execução em segundos: " + timeElapsed);
-
                         break;
                     case 2:
                         // Testando algoritmo guloso 1 (maior valor total);
@@ -315,9 +320,8 @@ public class Main {
                         long inicioGuloso1 = System.currentTimeMillis();
                         int melhorValorGuloso1 = algoritmoGuloso1.resolverEstrategia1(lances, energiaTotal);
                         long fimGuloso1 = System.currentTimeMillis();
-                        System.out.println("Melhor valor obtido (Guloso 1): " + melhorValorGuloso1);
+                        System.out.println("Melhor valor obtido (Guloso 1): " + melhorValorGuloso1 + " dinheiros");
                         System.out.println("Tempo de execução (Guloso 1): " + (fimGuloso1 - inicioGuloso1) + "ms");
-
                         break;
                     case 3:
                         // Testando algoritmo guloso 2 (melhor razão valor/energia);
@@ -325,9 +329,8 @@ public class Main {
                         long inicioGuloso2 = System.currentTimeMillis();
                         int melhorValorGuloso2 = algoritmoGuloso2.resolverEstrategia2(lances, energiaTotal);
                         long fimGuloso2 = System.currentTimeMillis();
-                        System.out.println("Melhor valor obtido (Guloso 2): " + melhorValorGuloso2);
+                        System.out.println("Melhor valor obtido (Guloso 2): " + melhorValorGuloso2 + " dinheiros");
                         System.out.println("Tempo de execução (Guloso 2): " + (fimGuloso2 - inicioGuloso2) + "ms");
-
                         break;
                     case 4:
                         // Testando divisão e conquista;
@@ -336,10 +339,9 @@ public class Main {
                         int melhorValorDivisaoConquista = divisaoEConquista.resolver(lances, energiaTotal);
                         long fimDivConquista = System.currentTimeMillis();
                         System.out.println(
-                                "Melhor valor obtido (Divisão e Conquista): " + melhorValorDivisaoConquista);
+                        "Melhor valor obtido (Divisão e Conquista): " + melhorValorDivisaoConquista + " dinheiros");
                         System.out.println("Tempo de execução (Divisão e Conquista): "
-                                + (fimDivConquista - inicioDivConquista) + "ms");
-
+                        + (fimDivConquista - inicioDivConquista) + "ms");
                         break;
                     case 5:
                         // Testando programação dinâmica;
@@ -348,21 +350,22 @@ public class Main {
                         int melhorValorProgramacaoDinamica = programacaoDinamica.resolver(lances, energiaTotal);
                         long fimProgramacaoDinamica = System.currentTimeMillis();
                         System.out.println(
-                                "Melhor valor obtido (Programação Dinâmica): " + melhorValorProgramacaoDinamica);
+                        "Melhor valor obtido (Programação Dinâmica): " + melhorValorProgramacaoDinamica + " dinheiros");
                         System.out.println("Tempo de execução (Programação Dinâmica): "
-                                + (fimProgramacaoDinamica - inicioProgramacaoDinamica) + "ms");
-
+                        + (fimProgramacaoDinamica - inicioProgramacaoDinamica) + "ms");
                         break;
                     default:
                         System.out.println("Opção inválida.");
                         scanner.close();
+                        System.exit(0);
                         break;
                 }
                 break;
-
+            // FINALIZA AQUI O CASE 2;
             default:
-                System.out.println("Opção inválida");
+                System.out.println("Opção inválida.");
                 scanner.close();
+                System.exit(0);
                 break;
         }
     }
