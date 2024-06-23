@@ -303,7 +303,7 @@ public class Main {
                         // Testando programação dinâmica;
                         ProgDinamica programacaoDinamica = new ProgDinamica();
                         long inicioProgramacaoDinamica = System.currentTimeMillis();
-                        int[] melhorValorProgramacaoDinamica = programacaoDinamica.resolver(lances, energiaTotalAula);
+                        int[] resultadoProgramacaoDinamica = programacaoDinamica.resolver(lances, energiaTotalAula);
                         long fimProgramacaoDinamica = System.currentTimeMillis();
                         double timeProgramacaoDinamica = (fimProgramacaoDinamica - inicioProgramacaoDinamica) / 1000.0;
                         // Imprime os valores;
