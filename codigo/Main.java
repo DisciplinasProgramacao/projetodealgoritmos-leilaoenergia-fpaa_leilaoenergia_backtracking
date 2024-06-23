@@ -302,15 +302,16 @@ public class Main {
                         Backtracking backtracking = new Backtracking();
                         long inicioBacktracking = System.currentTimeMillis();
                         backtracking.resolver(lances, energiaTotal);
-                        int energiaTotalVendida = 0;
+                        int energiaTotalBacktracking = 0;
                         for (Lance lance : backtracking.getMelhorCombinacao()) {
-                            energiaTotalVendida += lance.getEnergia();
+                            energiaTotalBacktracking += lance.getEnergia();
                         }
                         backtracking.imprimirMelhorCombinacao();
                         long fimBacktracking = System.currentTimeMillis();
-                        System.out.println("Energia Total Vendida (Backtracking): " + energiaTotalVendida + " MW");
-                        System.out.println("Melhor Valor Obtido (Backtracking): " + backtracking.melhorValorTotal + " dinheiros");
                         double timeBacktracking = (fimBacktracking - inicioBacktracking) / 1000.0;
+                        // Imprime os valores;
+                        System.out.println("Energia Total Vendida (Backtracking): " + energiaTotalBacktracking + " MW");
+                        System.out.println("Melhor Valor Obtido (Backtracking): " + backtracking.melhorValorTotal + " dinheiros");
                         System.out.println("Tempo de execução (Backtracking): " + timeBacktracking + " segundos");
                         break;
                     case 2:
@@ -320,6 +321,8 @@ public class Main {
                         int melhorValorGuloso1 = algoritmoGuloso1.resolverEstrategia1(lances, energiaTotal);
                         long fimGuloso1 = System.currentTimeMillis();
                         double timeGuloso1 = (fimGuloso1 - inicioGuloso1) / 1000.0;
+                        // Imprime os valores;
+                        //System.out.println("Energia Total Vendida (Guloso 1): " + energiaTotalGuloso1 + " MW");
                         System.out.println("Melhor valor obtido (Guloso 1): " + melhorValorGuloso1 + " dinheiros");
                         System.out.println("Tempo de execução (Guloso 1): " + timeGuloso1 + " segundos");
                         break;
@@ -330,6 +333,8 @@ public class Main {
                         int melhorValorGuloso2 = algoritmoGuloso2.resolverEstrategia2(lances, energiaTotal);
                         long fimGuloso2 = System.currentTimeMillis();
                         double timeGuloso2 = (fimGuloso2 - inicioGuloso2) / 1000.0;
+                        // Imprime os valores;
+                        //System.out.println("Energia Total Vendida (Guloso 2): " + energiaTotalGuloso2 + " MW");
                         System.out.println("Melhor valor obtido (Guloso 2): " + melhorValorGuloso2 + " dinheiros");
                         System.out.println("Tempo de execução (Guloso 2): " + timeGuloso2 + " segundos");
                         break;
@@ -340,8 +345,9 @@ public class Main {
                         int melhorValorDivisaoConquista = divisaoEConquista.resolver(lances, energiaTotal);
                         long fimDivConquista = System.currentTimeMillis();
                         double timeDivConquista = (fimDivConquista - inicioDivConquista) / 1000.0;
-                        System.out.println(
-                        "Melhor valor obtido (Divisão e Conquista): " + melhorValorDivisaoConquista + " dinheiros");
+                        // Imprime os valores;
+                        //System.out.println("Energia Total Vendida (Divisão e Conquista): " + energiaTotalDivConquista + " MW");
+                        System.out.println("Melhor valor obtido (Divisão e Conquista): " + melhorValorDivisaoConquista + " dinheiros");
                         System.out.println("Tempo de execução (Divisão e Conquista): " + timeDivConquista + " segundos");
                         break;
                     case 5:
@@ -351,9 +357,12 @@ public class Main {
                         int melhorValorProgramacaoDinamica = programacaoDinamica.resolver(lances, energiaTotal);
                         long fimProgramacaoDinamica = System.currentTimeMillis();
                         double timeProgramacaoDinamica = (fimProgramacaoDinamica - inicioProgramacaoDinamica) / 1000.0;
-                        System.out.println(
-                        "Melhor valor obtido (Programação Dinâmica): " + melhorValorProgramacaoDinamica + " dinheiros");
-                        System.out.println("Tempo de execução (Programação Dinâmica): "
+                        // Imprime os valores;
+                        //System.out.println("Energia Total Vendida (Programação Dinâmica): " + 
+                        //energiaTotalprogramacaoDinamica + " MW");
+                        System.out.println("Melhor valor obtido (Programação Dinâmica): " 
+                        + melhorValorProgramacaoDinamica + " dinheiros");
+                        System.out.println("Tempo de execução (Programação Dinâmica): " 
                         + timeProgramacaoDinamica + " segundos");
                         break;
                     default:
