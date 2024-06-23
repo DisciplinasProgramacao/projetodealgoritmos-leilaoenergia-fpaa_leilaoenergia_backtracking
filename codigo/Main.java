@@ -3,7 +3,10 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        //Conjunto 1 professor
         List<Lance> lances = new ArrayList<>();
+        //Conjunto 1 professor
+        List<Lance> lances1 = new ArrayList<>();
         Random random = new Random();
         Guloso guloso = new Guloso();
         Guloso1 guloso1 = new Guloso1();
