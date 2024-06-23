@@ -28,21 +28,20 @@ public class Main {
                     case 1:
                         // Cria uma nova instância da classe Backtracking
                         Backtracking backtracking = new Backtracking();
-                        double timeElapsed;
 
                         // Loop externo: começa com 10 lances e incrementa de 1 em 1 até que o tempo
                         // médio de execução ultrapasse 30 segundos
                         for (int i = 10;; i++) {
-                            // Lista para armazenar os tempos de execução de cada teste
-                            List<Double> times = new ArrayList<>();
+                            // Variável para armazenar a soma total dos tempos de execução para cada
+                            // conjunto de testes
+                            double totalTempo = 0.0;
 
                             // Loop interno: repete o teste 10 vezes para cada tamanho de conjunto
                             for (int k = 0; k < 10; k++) {
                                 // Cria uma nova lista de lances
                                 lances = new ArrayList<>();
 
-                                // Adiciona 'i' lances à lista, cada um com energia e valor baseados no índice
-                                // do loop
+                                // Adiciona 'i' lances à lista, cada um com energia e valor aleatórios
                                 for (int j = 0; j < i; j++) {
                                     int energia = 100 + random.nextInt(400);
                                     int valor = 1000 + random.nextInt(1000);
@@ -58,18 +57,26 @@ public class Main {
                                 // Registra o tempo de fim do algoritmo
                                 long fim = System.currentTimeMillis();
 
-                                // Calcula o tempo de execução em segundos e adiciona à lista de tempos
-                                timeElapsed = (fim - inicio) / 1000.0;
-                                times.add(timeElapsed);
+                                // Calcula o tempo de execução em segundos e adiciona ao total
+                                double timeElapsed = (fim - inicio) / 1000.0;
+                                totalTempo += timeElapsed;
                             }
 
                             // Calcula a média dos tempos de execução
-                            double averageTime = times.stream().mapToDouble(val -> val).average().orElse(0.0);
+                            double averageTime = totalTempo / 10;
 
                             // Imprime o tempo médio de execução
                             System.out.println(
                                     "Tempo médio de execução em segundos para " + i + " lances: " + averageTime);
 
+                            // Se o tempo médio de execução ultrapassou 30 segundos, imprime uma mensagem e
+                            // sai do loop externo
+                            if (averageTime > 30.0) {
+                                System.out.println(
+                                        "O algoritmo demorou mais de 30 segundos em média para resolver o problema com "
+                                                + i + " lances.");
+                                break;
+                            }
                             // Imprime os detalhes dos lances selecionados pelo algoritmo
                             System.out.println("Conjunto de lances selecionados:");
                             for (Lance lance : backtracking.getMelhorCombinacao()) {
@@ -79,18 +86,10 @@ public class Main {
 
                             // Imprime o valor total gasto e a energia total obtida
                             System.out.println("Valor total gasto: " + backtracking.getMelhorValor());
-                            System.out.println(
-                                    "Valor total de energia obtido: " + backtracking.getEnergiaTotalMelhorCombinacao());
+                            System.out.println("Valor total de energia obtido: "
+                                    + backtracking.getEnergiaTotalMelhorCombinacao());
 
-                            // Se o tempo médio de execução ultrapassou 30 segundos, sai do loop externo
-                            if (averageTime > 30.0) {
-                                System.out.println(
-                                        "O algoritmo demorou mais de 30 segundos em média para resolver o problema com "
-                                                + i + " lances.");
-                                break;
-                            }
                         }
-                        break;
                     case 2:
                         // Algoritmo guloso 1
                         for (int t = 10; t <= 100; t += 10) {
