@@ -2,78 +2,6 @@ import java.util.*;
 public class Main2 {
     static final int energiaTotal = 8000; // Quantidade X de energia, medida em megawatts, para vender;
     //**************************************************************************************/
-    /*
-     * Gerar conjuntos de teste de tamanho crescente, a partir de 10 interessadas e incrementando de 1 em 1,
-     * até atingir um tamanho T que não consiga ser resolvido em até 30 segundos pelo algoritmo.
-     * Na busca do tempo limite de 30 segundos, faça o teste com 10 conjuntos de cada tamanho,
-     * contabilizando a média das execuções.
-     */
-    static List<Lance> preencherBacktracking() {
-        List<Lance> conjuntoDeLances = new ArrayList<>();
-        int tamanho = 10; // Começando com 10 interessadas;
-        long maxTempo = 30 * 1000; // 30 segundos;
-        long tempoTotal;
-        while (true) {
-            tempoTotal = 0;
-            for (int i = 0; i < 10; i++) {
-                List<Lance> conjuntoTeste = gerarConjuntoTeste(tamanho);
-                long tempoInicio = System.currentTimeMillis();
-                // Simulação de execução - substituir pela chamada do método real;
-                simularExecucao(conjuntoTeste, 8000);
-                long tempoFim = System.currentTimeMillis();
-                tempoTotal += (tempoFim - tempoInicio);
-            }
-            long tempoMedio = tempoTotal / 10;
-            if (tempoMedio > maxTempo) {
-                break;
-            } else {
-                // Adiciona o conjunto somente se ainda estiver dentro do limite de tempo;
-                List<Lance> conjuntoValido = new ArrayList<>();
-                for (int i = 0; i < 10; i++) {
-                    conjuntoValido = gerarConjuntoTeste(tamanho);
-                }
-                conjuntoDeLances.addAll(conjuntoValido);
-                tamanho++;
-            }
-        }
-        return conjuntoDeLances;
-    }
-    /*
-     * Para este teste, utilize os mesmos conjuntos de tamanho T encontrados no backtracking.
-     * Em seguida, aumente os tamanhos dos conjuntos de T em T até atingir o tamanho 10T,
-     * sempre executando 10 testes de cada tamanho para utilizar a média.
-     */
-    static List<Lance> preencherGuloso(List<Lance> lancesBacktracking) {
-        List<Lance> conjuntoDeLances = new ArrayList<>(lancesBacktracking);
-        int T = lancesBacktracking.size();
-        for (int i = 1; i <= 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                List<Lance> conjuntoTeste = gerarConjuntoTeste(T * (i + 1));
-                conjuntoDeLances.addAll(conjuntoTeste);
-            }
-        }
-        return conjuntoDeLances;
-    }    
-    // Função para gerar um conjunto de teste de tamanho específico;
-    static List<Lance> gerarConjuntoTeste(int tamanho) {
-        Random random = new Random();
-        List<Lance> lances = new ArrayList<>();
-        for (int i = 0; i < tamanho; i++) {
-            int tamanhoLote = 100 + random.nextInt(600); // Gerar lotes entre 100 e 700 MW;
-            int valor = 1000 + random.nextInt(2000); // Gerar valores entre 1000 e 3000;
-            lances.add(new Lance(tamanhoLote, valor));
-        }
-        return lances;
-    }
-    // Método de simulação de execução para cálculo de tempo;
-    static void simularExecucao(List<Lance> lances, int energiaTotal) {
-        // Simulação de execução - ajuste para seu método real;
-        try {
-            Thread.sleep(1); // Simular tempo de execução;
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
     // Conjunto de empresas interessadas 1;
     static List<Lance> preencherInteressadas1(){
         List<Lance> lances = new ArrayList<>();
@@ -208,40 +136,89 @@ public class Main2 {
         System.out.println("Tempo de execução (Programação Dinâmica): " + timeProgramacaoDinamica + " segundos\n");
     }
     //**************************************************************************************/
+    // Preencher conjunto de testes para o algoritmo de Backtracking;
+    static List<List<Lance>> preencherBacktracking() {
+        List<List<Lance>> conjuntos = new ArrayList<>();
+        int numLances = 10; // Tamanho inicial do conjunto de lances;
+        boolean dentroDoLimite = true;
+        // Loop que repete até que o tempo ultrapasse 30 segundo;
+        while (dentroDoLimite) {
+            long somaTempos = 0;
+            int numTestes = 10;
+            for (int i = 0; i < numTestes; i++) {
+                List<Lance> lances = new ArrayList<>();
+                for (int j = 0; j < numLances; j++) {
+                    int energia = 100 + new Random().nextInt(500); // Energia entre 100 e 600;
+                    int valor = 1000 + new Random().nextInt(2000); // Valor entre 1000 e 3000;
+                    lances.add(new Lance(energia, valor));
+                }
+                // Medir o tempo de execução;
+                long inicio = System.currentTimeMillis();
+                Backtracking backtracking = new Backtracking();
+                backtracking.resolver(lances, energiaTotal);
+                // Realiza TesteBacktracking() com o conjunto de lances atual;
+                //TesteBacktracking(lances);
+                long fim = System.currentTimeMillis();
+                long tempoExecucao = fim - inicio;
+                // Acumular o tempo de execução;
+                somaTempos += tempoExecucao;
+                conjuntos.add(lances);
+            }
+            double mediaTempoExecucao = (somaTempos / numTestes) / 1000.0;
+            System.out.println("Tempo médio para " + numLances + " lances: " + mediaTempoExecucao + " segundos");
+            if (mediaTempoExecucao <= 30) {
+                numLances++;
+            } else {
+                dentroDoLimite = false;
+            }
+        }
+        return conjuntos;
+    }
+    //**************************************************************************************/
     // Main do projeto;
     public static void main(String[] args){
         // Listas de lances;
-        List<Lance> lancesBacktracking = new ArrayList<>();
-        List<Lance> lancesGuloso = new ArrayList<>();
-        List<Lance> lancesDivConquista = new ArrayList<>();
-        List<Lance> lancesProgDinamica = new ArrayList<>();
+        List<List<Lance>> lancesBacktracking = new ArrayList<>();
+        List<List<Lance>> lancesGuloso = new ArrayList<>();
+        List<List<Lance>> lancesDivConquista = new ArrayList<>();
+        List<List<Lance>> lancesProgDinamica = new ArrayList<>();
         List<Lance> lancesInteressadas1 = new ArrayList<>();
         List<Lance> lancesInteressadas2 = new ArrayList<>();
 
-        // Preencher as listas segundo os requisitos pedidos;
-        //lancesBacktracking = preencherBacktracking();
-        //lancesGuloso = preencherGuloso(lancesBacktracking);
-        lancesDivConquista = lancesBacktracking;
-        lancesProgDinamica = lancesGuloso;
-        lancesInteressadas1 = preencherInteressadas1();
-        lancesInteressadas2 = preencherInteressadas2();
-
-        // Realizando os Algoritmos;
-        System.out.println("\nEmpresas Interessadas 1\n");
-        TesteBacktracking(lancesInteressadas1);
-        TesteGuloso1(lancesInteressadas1);
-        TesteGuloso2(lancesInteressadas1);
-        TesteDivConquista(lancesInteressadas1);
-        TesteProgDinamica(lancesInteressadas1);
-
-        System.out.println("Empresas Interessadas 2\n");
-        TesteBacktracking(lancesInteressadas2);
-        TesteGuloso1(lancesInteressadas2);
-        TesteGuloso2(lancesInteressadas2);
-        TesteDivConquista(lancesInteressadas2);
-        TesteProgDinamica(lancesInteressadas2);
-
-        System.out.println("Outros\n");
-
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
+        System.out.println("Escolha um conjunto: ");
+        System.out.println("1. Nosso conjunto");
+        System.out.println("2. Conjunto empresas interessadas");
+        opcao = scanner.nextInt();
+        switch (opcao){
+            case 1:
+                // Preencher as listas segundo os requisitos pedidos;
+                lancesBacktracking = preencherBacktracking();
+                //lancesGuloso = preencherGuloso(lancesBacktracking);
+                lancesDivConquista = lancesBacktracking;
+                lancesProgDinamica = lancesGuloso;
+            break;
+            case 2:
+                lancesInteressadas1 = preencherInteressadas1();
+                lancesInteressadas2 = preencherInteressadas2();
+                System.out.println("\nEmpresas Interessadas 1\n");
+                TesteBacktracking(lancesInteressadas1);
+                TesteGuloso1(lancesInteressadas1);
+                TesteGuloso2(lancesInteressadas1);
+                TesteDivConquista(lancesInteressadas1);
+                TesteProgDinamica(lancesInteressadas1);
+                System.out.println("Empresas Interessadas 2\n");
+                TesteBacktracking(lancesInteressadas2);
+                TesteGuloso1(lancesInteressadas2);
+                TesteGuloso2(lancesInteressadas2);
+                TesteDivConquista(lancesInteressadas2);
+                TesteProgDinamica(lancesInteressadas2);
+            break;
+            default:
+                System.out.println("Opção inválida.");
+            break;
+        }
+        scanner.close();
     }
 }
