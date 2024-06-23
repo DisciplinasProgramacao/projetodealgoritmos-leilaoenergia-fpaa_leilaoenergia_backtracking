@@ -136,8 +136,14 @@ public class Main2 {
         System.out.println("Tempo de execução (Programação Dinâmica): " + timeProgramacaoDinamica + " segundos\n");
     }
     //**************************************************************************************/
-    // Preencher conjunto de testes para o algoritmo de Backtracking;
+    /*
+     * Gerar conjuntos de teste de tamanho crescente, a partir de 10 interessadas e incrementando de 1 em 1,
+     * até atingir um tamanho T que não consiga ser resolvido em até 30 segundos pelo algoritmo.
+     * Na busca do tempo limite de 30 segundos, faça o teste com 10 conjuntos de cada tamanho,
+     * contabilizando a média das execuções.
+     */
     static List<List<Lance>> preencherBacktracking() {
+        // Preencher conjunto de testes para o algoritmo de Backtracking;
         List<List<Lance>> conjuntos = new ArrayList<>();
         int numLances = 10; // Tamanho inicial do conjunto de lances;
         boolean dentroDoLimite = true;
@@ -157,7 +163,7 @@ public class Main2 {
                 Backtracking backtracking = new Backtracking();
                 backtracking.resolver(lances, energiaTotal);
                 // Realiza TesteBacktracking() com o conjunto de lances atual;
-                //TesteBacktracking(lances);
+                // TesteBacktracking(lances);
                 long fim = System.currentTimeMillis();
                 long tempoExecucao = fim - inicio;
                 // Acumular o tempo de execução;
@@ -173,6 +179,14 @@ public class Main2 {
             }
         }
         return conjuntos;
+    }
+    /*
+     * Para este teste, utilize os mesmos conjuntos de tamanho T encontrados no backtracking.
+     * Em seguida, aumente os tamanhos dos conjuntos de T em T até atingir o tamanho 10T,
+     * sempre executando 10 testes de cada tamanho para utilizar a média.
+     */
+    static List<List<Lance>> preencherGuloso(List<List<Lance>> lancesBacktracking){
+
     }
     //**************************************************************************************/
     // Main do projeto;
@@ -195,7 +209,7 @@ public class Main2 {
             case 1:
                 // Preencher as listas segundo os requisitos pedidos;
                 lancesBacktracking = preencherBacktracking();
-                //lancesGuloso = preencherGuloso(lancesBacktracking);
+                lancesGuloso = preencherGuloso(lancesBacktracking);
                 lancesDivConquista = lancesBacktracking;
                 lancesProgDinamica = lancesGuloso;
             break;
