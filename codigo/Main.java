@@ -71,12 +71,13 @@ public class Main {
 //                        long fimGuloso1 = System.currentTimeMillis();
 //                        double tempo = (fimGuloso1 - inicioGuloso1) / 1000.0;
 //                        tempoTotal += tempo;
+//                        //Imprimir valor e energia
 //                    }
 //                    System.out.println("Tempo medio para conjunto de " + size + ": " + tempoTotal/10);
+//                    size *= 2;
 //                    for (int j = 0; j < 10; j++) {
 //                        conjunto10T.add(gerarConjuntoLances(size, random));
 //                    }
-//                    size *= 2;
 //                }
 
                 long inicioGuloso1 = System.currentTimeMillis();
