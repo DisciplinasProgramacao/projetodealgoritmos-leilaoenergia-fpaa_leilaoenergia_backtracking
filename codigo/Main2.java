@@ -8,8 +8,8 @@ public class Main2 {
      * Na busca do tempo limite de 30 segundos, faça o teste com 10 conjuntos de cada tamanho,
      * contabilizando a média das execuções.
      */
-    static List<List<Lance>> preencherBacktracking() {
-        List<List<Lance>> conjuntosDeLances = new ArrayList<>();
+    static List<Lance> preencherBacktracking() {
+        List<Lance> conjuntoDeLances = new ArrayList<>();
         int tamanho = 10; // Começando com 10 interessadas;
         long maxTempo = 30 * 1000; // 30 segundos;
         long tempoTotal;
@@ -32,27 +32,28 @@ public class Main2 {
                 for (int i = 0; i < 10; i++) {
                     conjuntoValido = gerarConjuntoTeste(tamanho);
                 }
-                conjuntosDeLances.add(conjuntoValido);
+                conjuntoDeLances.addAll(conjuntoValido);
                 tamanho++;
             }
         }
-        return conjuntosDeLances;
+        return conjuntoDeLances;
     }
     /*
      * Para este teste, utilize os mesmos conjuntos de tamanho T encontrados no backtracking.
      * Em seguida, aumente os tamanhos dos conjuntos de T em T até atingir o tamanho 10T,
      * sempre executando 10 testes de cada tamanho para utilizar a média.
      */
-    static List<List<Lance>> preencherGuloso(List<List<Lance>> lancesBacktracking) {
-        List<List<Lance>> conjuntosDeLances = new ArrayList<>(lancesBacktracking);
-        int T = lancesBacktracking.size() > 0 ? lancesBacktracking.get(lancesBacktracking.size() - 1).size() : 10;
+    static List<Lance> preencherGuloso(List<Lance> lancesBacktracking) {
+        List<Lance> conjuntoDeLances = new ArrayList<>(lancesBacktracking);
+        int T = lancesBacktracking.size();
         for (int i = 1; i <= 10; i++) {
             for (int j = 0; j < 10; j++) {
-                conjuntosDeLances.add(gerarConjuntoTeste(T * (i + 1)));
+                List<Lance> conjuntoTeste = gerarConjuntoTeste(T * (i + 1));
+                conjuntoDeLances.addAll(conjuntoTeste);
             }
         }
-        return conjuntosDeLances;
-    }
+        return conjuntoDeLances;
+    }    
     // Função para gerar um conjunto de teste de tamanho específico;
     static List<Lance> gerarConjuntoTeste(int tamanho) {
         Random random = new Random();
@@ -134,14 +135,10 @@ public class Main2 {
         return lances;
     }
     //**************************************************************************************/
-    static void TesteBacktracking(List<List<Lance>> lancesBacktracking){
-
-    }
-    static void TesteBacktracking2(List<Lance> lancesInteressadas1, List<Lance> lancesInteressadas2){
-        // Empresas interessadas 1;
+    static void TesteBacktracking(List<Lance> lancesBacktracking){
         Backtracking backtracking = new Backtracking();
         long inicioBacktracking = System.currentTimeMillis();
-        backtracking.resolver(lancesInteressadas1, energiaTotal);
+        backtracking.resolver(lancesBacktracking, energiaTotal);
         int energiaTotalBacktracking = 0;
         for (Lance lance : backtracking.getMelhorCombinacao()) {
             energiaTotalBacktracking += lance.getEnergia();
@@ -156,25 +153,26 @@ public class Main2 {
     }
     public static void main(String[] args){
         // Listas de lances;
-        List<List<Lance>> lancesBacktracking = new ArrayList<>();
-        List<List<Lance>> lancesGuloso = new ArrayList<>();
-        List<List<Lance>> lancesDivConquista = new ArrayList<>();
-        List<List<Lance>> lancesProgDinamica = new ArrayList<>();
+        List<Lance> lancesBacktracking = new ArrayList<>();
+        List<Lance> lancesGuloso = new ArrayList<>();
+        List<Lance> lancesDivConquista = new ArrayList<>();
+        List<Lance> lancesProgDinamica = new ArrayList<>();
         List<Lance> lancesInteressadas1 = new ArrayList<>();
         List<Lance> lancesInteressadas2 = new ArrayList<>();
 
         // Preencher as listas segundo os requisitos pedidos;
         //lancesBacktracking = preencherBacktracking();
         //lancesGuloso = preencherGuloso(lancesBacktracking);
-        //lancesDivConquista = lancesBacktracking;
-        //lancesProgDinamica = lancesGuloso;
+        lancesDivConquista = lancesBacktracking;
+        lancesProgDinamica = lancesGuloso;
         lancesInteressadas1 = preencherInteressadas1();
         lancesInteressadas2 = preencherInteressadas2();
 
         // Realizando os Algoritmos;
         // Testando backtracking;
         TesteBacktracking(lancesBacktracking);
-        TesteBacktracking2(lancesInteressadas1, lancesInteressadas2);
+        TesteBacktracking(lancesInteressadas1);
+        TesteBacktracking(lancesInteressadas2);
         // Testando algoritmo guloso 1 (maior valor total);
         // Testando algoritmo guloso 2 (melhor razão valor/energia);
         // Testando divisão e conquista;
