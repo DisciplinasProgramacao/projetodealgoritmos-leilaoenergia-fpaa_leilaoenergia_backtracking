@@ -7,15 +7,17 @@ public class Main {
         Random random = new Random();
         Guloso guloso = new Guloso();
         Guloso1 guloso1 = new Guloso1();
-        int energiaTotal = 8000; // Quantidade X de energia, medida em megawatts, para vender;
+
+        List<List<Lance>> conjuntoT = new ArrayList<>();
+
         int opcao1;
         int opcao2;
         int opcao3;
         int opcao4;
 
         System.out.println("Escolha um conjunto: ");
-        System.out.println("1. Nosso conjunto");
-        System.out.println("2. Conjunto empresas interessadas");
+        System.out.println("1. Nosso conjunto (testes)");
+        System.out.println("2. Conjunto empresas interessadas (aula)");
         opcao1 = scanner.nextInt();
         switch (opcao1) {
             case 1:
@@ -25,75 +27,55 @@ public class Main {
                 System.out.println("3. Algoritmo guloso 2");
                 System.out.println("4. Divisão e conquista");
                 System.out.println("5. Programação dinâmica");
+                System.out.println("6. Imprimir conjunto");
                 opcao2 = scanner.nextInt();
+                int energiaTotal = 15000;
                 switch (opcao2) {
                     case 1:
-                        // Cria uma nova instância da classe Backtracking
                         Backtracking backtracking = new Backtracking();
-                        double timeElapsed;
+                        List<List<Lance>> conjuntoAux = new ArrayList<>();
+                        double tempoMedioFinal = 0;
+                        double tempoMedio = 0;
+                        int tamanhoConjunto = 10;
+                        while (true) {
+                            double tempoTeste = 0;
+                            conjuntoAux.clear();
 
-                        // Loop externo: começa com 10 lances e incrementa de 1 em 1 até que o tempo
-                        // médio de execução ultrapasse 30 segundos
-                        for (int i = 10;; i++) {
-                            // Lista para armazenar os tempos de execução de cada teste
-                            List<Double> times = new ArrayList<>();
+                            for (int j = 0; j < 10; j++ ) {
 
-                            // Loop interno: repete o teste 10 vezes para cada tamanho de conjunto
-                            for (int k = 0; k < 10; k++) {
-                                // Cria uma nova lista de lances
-                                lances = new ArrayList<>();
-
-                                // Adiciona 'i' lances à lista, cada um com energia e valor aleatórios
-                                for (int j = 0; j < i; j++) {
-                                    int energia = 100 + random.nextInt(400);
-                                    int valor = 1000 + random.nextInt(1000);
-                                    lances.add(new Lance(energia, valor));
+                                List<Lance> lancesTeste = new ArrayList<>();
+                                for (int i = 0; i < tamanhoConjunto; i++) {
+                                    int energia = 100 + random.nextInt(700);
+                                    int valor = 1000 + random.nextInt(1200);
+                                    lancesTeste.add(new Lance(energia, valor));
                                 }
 
-                                // Registra o tempo de início do algoritmo
+                                conjuntoAux.add(new ArrayList<>(lancesTeste));
+
                                 long inicio = System.currentTimeMillis();
-
-                                // Executa o algoritmo
-                                backtracking.resolver(lances, energiaTotal);
-
-                                // Registra o tempo de fim do algoritmo
+                                backtracking.resolver(lancesTeste, energiaTotal);
                                 long fim = System.currentTimeMillis();
+                                double tempoDecorrido  = (fim - inicio) / 1000.0;
+                                tempoTeste += tempoDecorrido ;
+                            }
+                            tempoMedio = tempoTeste/10;
 
-                                // Calcula o tempo de execução em segundos e adiciona à lista de tempos
-                                timeElapsed = (fim - inicio) / 1000.0;
-                                times.add(timeElapsed);
 
-                                // Se o tempo de execução ultrapassou 30 segundos, imprime uma mensagem e sai do
-                                // loop interno
-                                if (timeElapsed > 30.0) {
-                                    System.out.println(
-                                            "O algoritmo demorou mais de 30 segundos para resolver o problema com " + i
-                                                    + " lances.");
-                                    break;
+
+                            if (tempoMedio < 30.0) {
+                                tamanhoConjunto += 1;
+                                conjuntoT = new ArrayList<>(conjuntoAux);
+                                tempoMedioFinal = tempoMedio;
+                            } else {
+
+                                System.out.println("Tamanho conjunto: " + tamanhoConjunto + " Tempo médio: " + tempoMedioFinal);
+                                System.out.println("Conjunto de lances selecionados:");
+                                for (Lance lance : backtracking.getMelhorCombinacao()) {
+                                    System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
+                                            + lance.getValor() + " dinheiros");
                                 }
-                            }
-
-                            // Calcula a média dos tempos de execução
-                            double averageTime = times.stream().mapToDouble(val -> val).average().orElse(0.0);
-
-                            // Imprime o tempo médio de execução
-                            System.out.println(
-                                    "Tempo médio de execução em segundos para " + i + " lances: " + averageTime);
-
-                            // Imprime os detalhes dos lances selecionados pelo algoritmo
-                            System.out.println("Conjunto de lances selecionados:");
-                            for (Lance lance : backtracking.getMelhorCombinacao()) {
-                                System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
-                                        + lance.getValor() + " dinheiros");
-                            }
-
-                            // Imprime o valor total gasto e a energia total obtida
-                            System.out.println("Valor total gasto: " + backtracking.getMelhorValor());
-                            System.out.println(
-                                    "Valor total de energia obtido: " + backtracking.getEnergiaTotalMelhorCombinacao());
-
-                            // Se o tempo médio de execução ultrapassou 30 segundos, sai do loop externo
-                            if (averageTime > 30.0) {
+                                System.out.println("Valor total gasto: " + backtracking.getMelhorValor());
+                                System.out.println("Valor total de energia obtido: " + backtracking.getEnergiaTotalMelhorCombinacao());
                                 break;
                             }
                         }
@@ -172,7 +154,7 @@ public class Main {
                         // Testando divisão e conquista;
                         DivConquista divisaoEConquista = new DivConquista();
                         long inicioDivConquista = System.currentTimeMillis();
-                        int melhorValorDivisaoConquista = divisaoEConquista.resolver(lances, energiaTotal);
+                        int[] melhorValorDivisaoConquista = divisaoEConquista.resolver(lances, energiaTotal);
                         long fimDivConquista = System.currentTimeMillis();
                         System.out.println(
                                 "Melhor valor obtido (Divisão e Conquista): " + melhorValorDivisaoConquista);
@@ -182,6 +164,16 @@ public class Main {
                         break;
                     case 5:
 
+                        break;
+                    case 6:
+                        if (!conjuntoT.isEmpty()) {
+                            for (List<Lance> list : conjuntoT) {
+                                for (Lance lance : list) {
+                                    System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: "
+                                            + lance.getValor() + " dinheiros");
+                                }
+                            }
+                        }
                         break;
                     default:
                         System.out.println("Opção inválida.");
@@ -194,7 +186,7 @@ public class Main {
                 System.out.println("1. Conjunto 1");
                 System.out.println("2. Conjunto 2");
                 opcao4 = scanner.nextInt();
-
+                int energiaTotalAula = 8000;
                 if (opcao4 == 1) {
                     // Conjunto de empresas interessadas 1
                     lances.add(new Lance(430, 1043));
@@ -265,7 +257,7 @@ public class Main {
                         // Testando backtracking;
                         Backtracking backtracking = new Backtracking();
                         long inicio = System.currentTimeMillis();
-                        backtracking.resolver(lances, energiaTotal);
+                        backtracking.resolver(lances, energiaTotalAula);
                         int energiaTotalVendida = 0;
                         for (Lance lance : backtracking.getMelhorCombinacao()) {
                             energiaTotalVendida += lance.getEnergia();
@@ -282,7 +274,7 @@ public class Main {
                         // Testando algoritmo guloso 1 (maior valor total)
                         Guloso algoritmoGuloso1 = new Guloso();
                         long inicioGuloso1 = System.currentTimeMillis();
-                        int melhorValorGuloso1 = algoritmoGuloso1.resolverEstrategia1(lances, energiaTotal);
+                        int melhorValorGuloso1 = algoritmoGuloso1.resolverEstrategia1(lances, energiaTotalAula);
                         long fimGuloso1 = System.currentTimeMillis();
                         System.out.println("Melhor valor obtido (Guloso 1): " + melhorValorGuloso1);
                         System.out.println("Tempo de execução (Guloso 1): " + (fimGuloso1 - inicioGuloso1) + "ms");
@@ -290,7 +282,7 @@ public class Main {
                     case 3:
                         // Testando algoritmo guloso 2 (melhor razão valor/energia)
                         long inicioGuloso2 = System.currentTimeMillis();
-                        int melhorValorGuloso2 = guloso1.resolverEstrategia2(lances, energiaTotal);
+                        int melhorValorGuloso2 = guloso1.resolverEstrategia2(lances, energiaTotalAula);
                         long fimGuloso2 = System.currentTimeMillis();
                         System.out.println("Melhor valor obtido (Guloso 2): " + melhorValorGuloso2);
                         System.out.println("Tempo de execução (Guloso 2): " + (fimGuloso2 - inicioGuloso2) + "ms");
@@ -299,7 +291,7 @@ public class Main {
                         // Testando divisão e conquista;
                         DivConquista divisaoEConquista = new DivConquista();
                         long inicioDivConquista = System.currentTimeMillis();
-                        int melhorValorDivisaoConquista = divisaoEConquista.resolver(lances, energiaTotal);
+                        int[] melhorValorDivisaoConquista = divisaoEConquista.resolver(lances, energiaTotalAula);
                         long fimDivConquista = System.currentTimeMillis();
                         System.out.println(
                                 "Melhor valor obtido (Divisão e Conquista): " + melhorValorDivisaoConquista);
@@ -311,7 +303,7 @@ public class Main {
                         // Testando programação dinâmica;
                         ProgDinamica programacaoDinamica = new ProgDinamica();
                         long inicioProgramacaoDinamica = System.currentTimeMillis();
-                        int melhorValorProgramacaoDinamica = programacaoDinamica.resolver(lances, energiaTotal);
+                        int[] melhorValorProgramacaoDinamica = programacaoDinamica.resolver(lances, energiaTotalAula);
                         long fimProgramacaoDinamica = System.currentTimeMillis();
                         System.out.println(
                                 "Melhor valor obtido (Programação Dinâmica): " + melhorValorProgramacaoDinamica);
@@ -319,6 +311,7 @@ public class Main {
                                 + (fimProgramacaoDinamica - inicioProgramacaoDinamica) + "ms");
 
                         break;
+
                     default:
                         System.out.println("Opção inválida.");
                         scanner.close();
