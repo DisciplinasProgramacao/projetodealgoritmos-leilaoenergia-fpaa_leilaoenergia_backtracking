@@ -20,7 +20,7 @@ public class Guloso {
 
         // Imprimir os lances selecionados;
         //imprimirLancesSelecionados("Maior Valor Total Primeiro", lancesSelecionados, 1, energiaDisponivel);
-        System.out.println("Energia: " + energiaVendida + "Valor: " + valorTotal);
+        System.out.println("Energia: " + energiaVendida + " Valor: " + valorTotal);
         return;
     }
 
@@ -42,7 +42,7 @@ public class Guloso {
         }
 
         // Imprimir os lances selecionados;
-        System.out.println("Energia: " + energiaVendida + "Valor: " + valorTotal);
+        System.out.println("Energia: " + energiaVendida + " Valor: " + valorTotal);
     }
 
     private void imprimirLancesSelecionados(String estrategia, List<Lance> lancesSelecionados, int num, int energiaTotal) {

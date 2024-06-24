@@ -56,7 +56,7 @@ public class Main {
                         System.out.println("Tamanho conjunto: " + tamanhoConjunto + " Tempo médio: " + tempoMedioFinal);
                         for (List<Lance> list : conjuntoT) {
                             backtracking.resolver(list, energiaTotal);
-                            System.out.println("Energia: " + backtracking.getEnergiaTotalMelhorCombinacao() + "Valor: " + backtracking.getMelhorValor());
+                            System.out.println("Energia: " + backtracking.getEnergiaTotalMelhorCombinacao() + " Valor: " + backtracking.getMelhorValor());
                         }
                         break;
                     }
@@ -143,7 +143,7 @@ public class Main {
                     long inicio = System.currentTimeMillis();
                     int[] resultado = pd.resolver(list, energiaTotal);
                     long fim = System.currentTimeMillis();
-                    System.out.println("Energia: " + resultado[1] + "Melhor valor PD: " + resultado[0]);
+                    System.out.println("Energia: " + resultado[1] + " Melhor valor PD: " + resultado[0]);
                     double tempo = (fim - inicio) / 1000.0;
                     tempoTotalPd += tempo;
                 }
@@ -159,7 +159,7 @@ public class Main {
                         long inicio = System.currentTimeMillis();
                         int[] resultado = pd.resolver(lista, energiaTotal);
                         long fim = System.currentTimeMillis();
-                        System.out.println("Energia: " + resultado[1] + "Melhor valor PD: " + resultado[0]);
+                        System.out.println("Energia: " + resultado[1] + " Melhor valor PD: " + resultado[0]);
                         double tempo = (fim - inicio) / 1000.0;
                         tempoTotal += tempo;
                     }
