@@ -1,5 +1,10 @@
 import java.util.*;
 
+// O que foi mudado: a condição de termino sera quando a energia for menor que 0 ou se percorreu o conjunto
+// Foi que alterado que antes ele so nao incluia o lance atual, agora ele nao inclui e segue para o proximo
+// Finalizando ao incluir o lance atual ele so fazia isso, agora ele inclui se a energia permitir
+// Assim melhorando o algoritmo
+
 public class Backtracking {
     public List<Lance> melhorCombinacao;
     public int melhorValorTotal; // Atributo para armazenar o melhor valor total;
@@ -21,31 +26,26 @@ public class Backtracking {
     }
 
     private void backtracking(List<Lance> lances, int energiaRestante, int valorAtual, int indiceAtual,
-            List<Lance> combinacaoAtual) {
-        if (indiceAtual >= lances.size() || energiaRestante < 0) {
-            if (valorAtual > melhorValorTotal && energiaRestante >= 0) {
+                              List<Lance> combinacaoAtual) {
+        // Condição de término: se a energia restante é menor que zero ou se percorreu todos os lances
+        if (energiaRestante < 0 || indiceAtual >= lances.size()) {
+            if (valorAtual > melhorValorTotal) {
                 melhorCombinacao = new ArrayList<>(combinacaoAtual);
                 melhorValorTotal = valorAtual;
             }
             return;
         }
 
-        Lance lance = lances.get(indiceAtual);
-
-        // Poda: se a energia do lance atual é maior que a energia restante, não precisa;
-        // continuar;
-        if (lance.getEnergia() > energiaRestante) {
-            return;
-        }
-
-        // Não inclui o lance atual;
+        // Não inclui o lance atual e segue para o próximo
         backtracking(lances, energiaRestante, valorAtual, indiceAtual + 1, combinacaoAtual);
 
-        // Inclui o lance atual;
-        combinacaoAtual.add(lance);
-        backtracking(lances, energiaRestante - lance.getEnergia(), valorAtual + lance.getValor(), indiceAtual + 1,
-                combinacaoAtual);
-        combinacaoAtual.remove(combinacaoAtual.size() - 1);
+        // Inclui o lance atual se a energia permitir
+        Lance lance = lances.get(indiceAtual);
+        if (energiaRestante >= lance.getEnergia()) {
+            combinacaoAtual.add(lance);
+            backtracking(lances, energiaRestante - lance.getEnergia(), valorAtual + lance.getValor(), indiceAtual + 1, combinacaoAtual);
+            combinacaoAtual.remove(combinacaoAtual.size() - 1); // backtrack
+        }
     }
 
     public void imprimirMelhorCombinacao() {
