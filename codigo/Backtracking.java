@@ -62,6 +62,7 @@ public class Backtracking {
         }
     }
 
+    // Obter melhor combinação de lances;
     public List<Lance> getMelhorCombinacao() {
         return melhorCombinacao;
     }
