@@ -1,0 +1,658 @@
+BACKTRACKING
+Tamanho conjunto: 32 Tempo médio: 18.9697
+Energia: 10989 Valor: 25717
+Energia: 10923 Valor: 26705
+Energia: 10704 Valor: 26283
+Energia: 10965 Valor: 30589
+Energia: 10835 Valor: 29474
+Energia: 10936 Valor: 26767
+Energia: 10930 Valor: 24680
+Energia: 10971 Valor: 26352
+Energia: 10950 Valor: 27781
+Energia: 10993 Valor: 26697
+GULOSO 1
+Energia: 10999 Valor: 24962
+Energia: 10909 Valor: 26317
+Energia: 10897 Valor: 26629
+Energia: 10925 Valor: 30312
+Energia: 10919 Valor: 29420
+Energia: 10832 Valor: 26615
+Energia: 10925 Valor: 23653
+Energia: 10971 Valor: 26352
+Energia: 10658 Valor: 27696
+Energia: 10928 Valor: 27612
+Tempo medio para conjunto de 31: 2.0E-4
+Energia: 10972 Valor: 30866
+Energia: 10992 Valor: 40423
+Energia: 10955 Valor: 38576
+Energia: 10981 Valor: 42605
+Energia: 10964 Valor: 43707
+Energia: 10971 Valor: 40832
+Energia: 10958 Valor: 37024
+Energia: 10947 Valor: 31124
+Energia: 10991 Valor: 36359
+Energia: 10965 Valor: 43918
+Tempo medio para conjunto de 62: 0.0
+Energia: 10996 Valor: 38707
+Energia: 10987 Valor: 47224
+Energia: 10998 Valor: 38091
+Energia: 10955 Valor: 33843
+Energia: 10982 Valor: 36028
+Energia: 11000 Valor: 34756
+Energia: 10994 Valor: 37159
+Energia: 10959 Valor: 44075
+Energia: 10996 Valor: 33436
+Energia: 10976 Valor: 40422
+Tempo medio para conjunto de 93: 0.0
+Energia: 10992 Valor: 40930
+Energia: 10998 Valor: 33359
+Energia: 10993 Valor: 45749
+Energia: 10999 Valor: 39744
+Energia: 10997 Valor: 43213
+Energia: 10991 Valor: 42852
+Energia: 10978 Valor: 39644
+Energia: 10993 Valor: 47861
+Energia: 10998 Valor: 47821
+Energia: 10991 Valor: 38203
+Tempo medio para conjunto de 124: 1.0E-4
+Energia: 10986 Valor: 45274
+Energia: 10987 Valor: 51499
+Energia: 10985 Valor: 44394
+Energia: 10993 Valor: 45080
+Energia: 10996 Valor: 39233
+Energia: 10975 Valor: 42016
+Energia: 10987 Valor: 48250
+Energia: 10989 Valor: 46921
+Energia: 10982 Valor: 40071
+Energia: 10992 Valor: 54556
+Tempo medio para conjunto de 155: 1.0E-4
+Energia: 10992 Valor: 52647
+Energia: 10998 Valor: 40324
+Energia: 10995 Valor: 46535
+Energia: 10970 Valor: 53008
+Energia: 10993 Valor: 46181
+Energia: 10998 Valor: 36817
+Energia: 11000 Valor: 43133
+Energia: 10999 Valor: 52939
+Energia: 10992 Valor: 37241
+Energia: 10994 Valor: 43036
+Tempo medio para conjunto de 186: 2.0E-4
+Energia: 10992 Valor: 52905
+Energia: 11000 Valor: 34010
+Energia: 10996 Valor: 46073
+Energia: 10992 Valor: 48371
+Energia: 10999 Valor: 49343
+Energia: 10983 Valor: 47115
+Energia: 10989 Valor: 47065
+Energia: 10997 Valor: 53577
+Energia: 11000 Valor: 50375
+Energia: 10985 Valor: 42801
+Tempo medio para conjunto de 217: 1.0E-4
+Energia: 10999 Valor: 56769
+Energia: 10998 Valor: 46882
+Energia: 11000 Valor: 37582
+Energia: 11000 Valor: 47710
+Energia: 10998 Valor: 49783
+Energia: 11000 Valor: 56279
+Energia: 10999 Valor: 47897
+Energia: 10998 Valor: 45413
+Energia: 11000 Valor: 49544
+Energia: 11000 Valor: 50647
+Tempo medio para conjunto de 248: 2.0E-4
+Energia: 11000 Valor: 45644
+Energia: 10994 Valor: 42430
+Energia: 10998 Valor: 37655
+Energia: 10997 Valor: 51979
+Energia: 11000 Valor: 37893
+Energia: 10996 Valor: 55794
+Energia: 10999 Valor: 41249
+Energia: 10999 Valor: 51675
+Energia: 10999 Valor: 57743
+Energia: 11000 Valor: 49212
+Tempo medio para conjunto de 279: 2.0E-4
+Energia: 10993 Valor: 46452
+Energia: 10999 Valor: 42415
+Energia: 10996 Valor: 47587
+Energia: 11000 Valor: 52320
+Energia: 10999 Valor: 46327
+Energia: 10999 Valor: 48237
+Energia: 11000 Valor: 50184
+Energia: 10999 Valor: 49100
+Energia: 10988 Valor: 51266
+Energia: 10993 Valor: 47825
+Tempo medio para conjunto de 310: 3.0000000000000003E-4
+Energia: 10999 Valor: 47282
+Energia: 10997 Valor: 45103
+Energia: 10998 Valor: 46863
+Energia: 10992 Valor: 47184
+Energia: 10990 Valor: 47836
+Energia: 11000 Valor: 49954
+Energia: 10998 Valor: 47821
+Energia: 11000 Valor: 38972
+Energia: 10996 Valor: 56559
+Energia: 11000 Valor: 39973
+Tempo medio para conjunto de 341: 2.0E-4
+GULOSO 2
+Energia: 10992 Valor: 25982
+Energia: 10923 Valor: 26705
+Energia: 10875 Valor: 26652
+Energia: 10965 Valor: 30589
+Energia: 10609 Valor: 29267
+Energia: 10581 Valor: 26570
+Energia: 10656 Valor: 24910
+Energia: 10971 Valor: 26352
+Energia: 10950 Valor: 27781
+Energia: 10968 Valor: 27906
+Tempo medio para conjunto de 31: 2.0E-4
+Energia: 10886 Valor: 41832
+Energia: 10851 Valor: 41364
+Energia: 10969 Valor: 41452
+Energia: 10893 Valor: 40211
+Energia: 10870 Valor: 47498
+Energia: 10915 Valor: 42210
+Energia: 10792 Valor: 39814
+Energia: 10898 Valor: 47054\
+Energia: 10885 Valor: 45954
+Energia: 10819 Valor: 46110
+Tempo medio para conjunto de 62: 0.0
+Energia: 10977 Valor: 54961
+Energia: 10958 Valor: 54790
+Energia: 10945 Valor: 46840
+Energia: 10997 Valor: 51816
+Energia: 10931 Valor: 53743
+Energia: 10992 Valor: 47666
+Energia: 10968 Valor: 53317
+Energia: 10903 Valor: 55457
+Energia: 10974 Valor: 53085
+Energia: 10994 Valor: 47504
+Tempo medio para conjunto de 93: 0.0
+Energia: 10990 Valor: 66413
+Energia: 10966 Valor: 54873
+Energia: 10959 Valor: 59079
+Energia: 10873 Valor: 52137
+Energia: 10966 Valor: 54062
+Energia: 10925 Valor: 66390
+Energia: 10905 Valor: 58592
+Energia: 10916 Valor: 63354
+Energia: 10998 Valor: 58488
+Energia: 10994 Valor: 54302
+Tempo medio para conjunto de 124: 2.0E-4
+Energia: 10925 Valor: 61898
+Energia: 10931 Valor: 63426
+Energia: 10965 Valor: 69082
+Energia: 10950 Valor: 63241
+Energia: 10978 Valor: 65034
+Energia: 10974 Valor: 73803
+Energia: 10999 Valor: 65671
+Energia: 10958 Valor: 66329
+Energia: 10942 Valor: 65796
+Energia: 10963 Valor: 65808
+Tempo medio para conjunto de 155: 1.0E-4
+Energia: 10981 Valor: 75384
+Energia: 10969 Valor: 66587
+Energia: 10922 Valor: 76598
+Energia: 10931 Valor: 69659
+Energia: 10993 Valor: 69562
+Energia: 10942 Valor: 70199
+Energia: 10947 Valor: 70944
+Energia: 10950 Valor: 70273
+Energia: 10970 Valor: 71814
+Energia: 10954 Valor: 72953
+Tempo medio para conjunto de 186: 1.0E-4
+Energia: 10922 Valor: 69067
+Energia: 10978 Valor: 83826
+Energia: 10999 Valor: 73114
+Energia: 10967 Valor: 83936
+Energia: 10959 Valor: 84987
+Energia: 10945 Valor: 78169
+Energia: 10948 Valor: 79289
+Energia: 10985 Valor: 83837
+Energia: 10925 Valor: 86983
+Energia: 10986 Valor: 69533
+Tempo medio para conjunto de 217: 2.0E-4
+Energia: 10967 Valor: 93392
+Energia: 10956 Valor: 87317
+Energia: 10971 Valor: 82738
+Energia: 10987 Valor: 78233
+Energia: 10983 Valor: 83052
+Energia: 10942 Valor: 79449
+Energia: 10999 Valor: 87992
+Energia: 10999 Valor: 88784
+Energia: 10990 Valor: 78610
+Energia: 10985 Valor: 86255
+Tempo medio para conjunto de 248: 2.0E-4
+Energia: 10980 Valor: 95601
+Energia: 10978 Valor: 95072
+Energia: 10970 Valor: 85139
+Energia: 10992 Valor: 91397
+Energia: 10971 Valor: 100967
+Energia: 10996 Valor: 95298
+Energia: 10971 Valor: 101378
+Energia: 10967 Valor: 74437
+Energia: 10950 Valor: 93011
+Energia: 10983 Valor: 81994
+Tempo medio para conjunto de 279: 2.0E-4
+Energia: 10972 Valor: 93153
+Energia: 10989 Valor: 81262
+Energia: 10998 Valor: 93518
+Energia: 10943 Valor: 99899
+Energia: 10996 Valor: 95039
+Energia: 10990 Valor: 85721
+Energia: 10976 Valor: 88283
+Energia: 10979 Valor: 90672
+Energia: 10982 Valor: 93976
+Energia: 10993 Valor: 107967
+Tempo medio para conjunto de 310: 2.0E-4
+Energia: 10950 Valor: 105843
+Energia: 10995 Valor: 100923
+Energia: 11000 Valor: 91237
+Energia: 10971 Valor: 88814
+Energia: 10979 Valor: 105095
+Energia: 10992 Valor: 89604
+Energia: 10952 Valor: 95304
+Energia: 10971 Valor: 84543
+Energia: 10952 Valor: 94577
+Energia: 10975 Valor: 101354
+Tempo medio para conjunto de 341: 2.0E-4
+
+#DIVISÃO E CONQUISTA
+Lances Selecionados:
+- Energia: 81 MW, Valor: 1274 dinheiros
+- Energia: 119 MW, Valor: 1828 dinheiros
+- Energia: 121 MW, Valor: 1784 dinheiros
+- Energia: 21 MW, Valor: 159 dinheiros
+- Energia: 177 MW, Valor: 879 dinheiros
+- Energia: 275 MW, Valor: 1073 dinheiros
+- Energia: 160 MW, Valor: 624 dinheiros
+- Energia: 501 MW, Valor: 1881 dinheiros
+- Energia: 545 MW, Valor: 1699 dinheiros
+- Energia: 539 MW, Valor: 1446 dinheiros
+- Energia: 205 MW, Valor: 533 dinheiros
+- Energia: 175 MW, Valor: 451 dinheiros
+- Energia: 679 MW, Valor: 1533 dinheiros
+- Energia: 271 MW, Valor: 537 dinheiros
+- Energia: 741 MW, Valor: 1459 dinheiros
+- Energia: 518 MW, Valor: 942 dinheiros
+- Energia: 175 MW, Valor: 295 dinheiros
+- Energia: 650 MW, Valor: 1030 dinheiros
+- Energia: 521 MW, Valor: 819 dinheiros
+- Energia: 919 MW, Valor: 1421 dinheiros
+- Energia: 688 MW, Valor: 1030 dinheiros
+- Energia: 934 MW, Valor: 1195 dinheiros
+- Energia: 343 MW, Valor: 405 dinheiros
+- Energia: 521 MW, Valor: 580 dinheiros
+- Energia: 863 MW, Valor: 913 dinheiros
+- Energia: 250 MW, Valor: 192 dinheiros
+Valor Total: 25982
+Melhor valor obtido (Divisão e Conquista): [25982, 10992]
+Lances Selecionados:
+- Energia: 27 MW, Valor: 923 dinheiros
+- Energia: 121 MW, Valor: 1183 dinheiros
+- Energia: 209 MW, Valor: 1936 dinheiros
+- Energia: 211 MW, Valor: 1633 dinheiros
+- Energia: 89 MW, Valor: 634 dinheiros
+- Energia: 171 MW, Valor: 867 dinheiros
+- Energia: 430 MW, Valor: 1364 dinheiros
+- Energia: 512 MW, Valor: 1609 dinheiros
+- Energia: 41 MW, Valor: 127 dinheiros
+- Energia: 658 MW, Valor: 1934 dinheiros
+- Energia: 318 MW, Valor: 844 dinheiros
+- Energia: 485 MW, Valor: 1040 dinheiros
+- Energia: 441 MW, Valor: 921 dinheiros
+- Energia: 728 MW, Valor: 1389 dinheiros
+- Energia: 969 MW, Valor: 1824 dinheiros
+- Energia: 651 MW, Valor: 1208 dinheiros
+- Energia: 757 MW, Valor: 1394 dinheiros
+- Energia: 791 MW, Valor: 1342 dinheiros
+- Energia: 784 MW, Valor: 1327 dinheiros
+- Energia: 355 MW, Valor: 573 dinheiros
+- Energia: 784 MW, Valor: 1083 dinheiros
+- Energia: 488 MW, Valor: 594 dinheiros
+- Energia: 790 MW, Valor: 946 dinheiros
+- Energia: 113 MW, Valor: 10 dinheiros
+Valor Total: 26705
+Melhor valor obtido (Divisão e Conquista): [26705, 10923]
+Lances Selecionados:
+- Energia: 34 MW, Valor: 727 dinheiros
+- Energia: 106 MW, Valor: 1425 dinheiros
+- Energia: 105 MW, Valor: 1355 dinheiros
+- Energia: 261 MW, Valor: 1728 dinheiros
+- Energia: 287 MW, Valor: 1883 dinheiros
+- Energia: 208 MW, Valor: 1345 dinheiros
+- Energia: 360 MW, Valor: 1680 dinheiros
+- Energia: 276 MW, Valor: 1245 dinheiros
+- Energia: 175 MW, Valor: 689 dinheiros
+- Energia: 450 MW, Valor: 1519 dinheiros
+- Energia: 391 MW, Valor: 1236 dinheiros
+- Energia: 472 MW, Valor: 1387 dinheiros
+- Energia: 458 MW, Valor: 1178 dinheiros
+- Energia: 676 MW, Valor: 1716 dinheiros
+- Energia: 652 MW, Valor: 1269 dinheiros
+- Energia: 734 MW, Valor: 1317 dinheiros
+- Energia: 724 MW, Valor: 1076 dinheiros
+- Energia: 452 MW, Valor: 587 dinheiros
+- Energia: 562 MW, Valor: 670 dinheiros
+- Energia: 914 MW, Valor: 972 dinheiros
+- Energia: 664 MW, Valor: 548 dinheiros
+- Energia: 565 MW, Valor: 427 dinheiros
+- Energia: 648 MW, Valor: 368 dinheiros
+- Energia: 819 MW, Valor: 351 dinheiros
+Valor Total: 26698
+Melhor valor obtido (Divisão e Conquista): [26698, 10993]
+Lances Selecionados:
+- Energia: 1 MW, Valor: 1279 dinheiros
+- Energia: 4 MW, Valor: 1804 dinheiros
+- Energia: 7 MW, Valor: 364 dinheiros
+- Energia: 62 MW, Valor: 1089 dinheiros
+- Energia: 27 MW, Valor: 322 dinheiros
+- Energia: 145 MW, Valor: 1078 dinheiros
+- Energia: 331 MW, Valor: 1957 dinheiros
+- Energia: 188 MW, Valor: 838 dinheiros
+- Energia: 375 MW, Valor: 1536 dinheiros
+- Energia: 415 MW, Valor: 1605 dinheiros
+- Energia: 294 MW, Valor: 1136 dinheiros
+- Energia: 557 MW, Valor: 1979 dinheiros
+- Energia: 486 MW, Valor: 1509 dinheiros
+- Energia: 699 MW, Valor: 1992 dinheiros
+- Energia: 532 MW, Valor: 1387 dinheiros
+- Energia: 411 MW, Valor: 993 dinheiros
+- Energia: 634 MW, Valor: 1523 dinheiros
+- Energia: 680 MW, Valor: 1207 dinheiros
+- Energia: 969 MW, Valor: 1684 dinheiros
+- Energia: 434 MW, Valor: 730 dinheiros
+- Energia: 673 MW, Valor: 1127 dinheiros
+- Energia: 847 MW, Valor: 1337 dinheiros
+- Energia: 286 MW, Valor: 380 dinheiros
+- Energia: 208 MW, Valor: 255 dinheiros
+- Energia: 909 MW, Valor: 916 dinheiros
+- Energia: 281 MW, Valor: 223 dinheiros
+- Energia: 510 MW, Valor: 339 dinheiros
+Valor Total: 30589
+Melhor valor obtido (Divisão e Conquista): [30589, 10965]
+Lances Selecionados:
+- Energia: 2 MW, Valor: 1651 dinheiros
+- Energia: 21 MW, Valor: 1864 dinheiros
+- Energia: 8 MW, Valor: 241 dinheiros
+- Energia: 278 MW, Valor: 1571 dinheiros
+- Energia: 334 MW, Valor: 1810 dinheiros
+- Energia: 291 MW, Valor: 1459 dinheiros
+- Energia: 513 MW, Valor: 1929 dinheiros
+- Energia: 431 MW, Valor: 1606 dinheiros
+- Energia: 545 MW, Valor: 1966 dinheiros
+- Energia: 498 MW, Valor: 1387 dinheiros
+- Energia: 717 MW, Valor: 1805 dinheiros
+- Energia: 717 MW, Valor: 1589 dinheiros
+- Energia: 759 MW, Valor: 1425 dinheiros
+- Energia: 642 MW, Valor: 1200 dinheiros
+- Energia: 804 MW, Valor: 1491 dinheiros
+- Energia: 947 MW, Valor: 1649 dinheiros
+- Energia: 855 MW, Valor: 1365 dinheiros
+- Energia: 884 MW, Valor: 1290 dinheiros
+- Energia: 771 MW, Valor: 1117 dinheiros
+- Energia: 909 MW, Valor: 1281 dinheiros
+Valor Total: 29696
+Melhor valor obtido (Divisão e Conquista): [29696, 10926]
+Lances Selecionados:
+- Energia: 29 MW, Valor: 1032 dinheiros
+- Energia: 174 MW, Valor: 1839 dinheiros
+- Energia: 89 MW, Valor: 833 dinheiros
+- Energia: 230 MW, Valor: 1770 dinheiros
+- Energia: 301 MW, Valor: 1927 dinheiros
+- Energia: 342 MW, Valor: 1951 dinheiros
+- Energia: 330 MW, Valor: 1628 dinheiros
+- Energia: 281 MW, Valor: 1315 dinheiros
+- Energia: 516 MW, Valor: 1823 dinheiros
+- Energia: 365 MW, Valor: 1049 dinheiros
+- Energia: 364 MW, Valor: 868 dinheiros
+- Energia: 389 MW, Valor: 759 dinheiros
+- Energia: 359 MW, Valor: 694 dinheiros
+- Energia: 596 MW, Valor: 1118 dinheiros
+- Energia: 817 MW, Valor: 1523 dinheiros
+- Energia: 588 MW, Valor: 1008 dinheiros
+- Energia: 526 MW, Valor: 869 dinheiros
+- Energia: 586 MW, Valor: 746 dinheiros
+- Energia: 867 MW, Valor: 1027 dinheiros
+- Energia: 407 MW, Valor: 443 dinheiros
+- Energia: 791 MW, Valor: 814 dinheiros
+- Energia: 947 MW, Valor: 879 dinheiros
+- Energia: 454 MW, Valor: 386 dinheiros
+- Energia: 588 MW, Valor: 466 dinheiros
+Valor Total: 26767
+Melhor valor obtido (Divisão e Conquista): [26767, 10936]
+Lances Selecionados:
+- Energia: 302 MW, Valor: 1851 dinheiros
+- Energia: 174 MW, Valor: 883 dinheiros
+- Energia: 349 MW, Valor: 1609 dinheiros
+- Energia: 451 MW, Valor: 1425 dinheiros
+- Energia: 562 MW, Valor: 1529 dinheiros
+- Energia: 76 MW, Valor: 206 dinheiros
+- Energia: 320 MW, Valor: 856 dinheiros
+- Energia: 461 MW, Valor: 1171 dinheiros
+- Energia: 678 MW, Valor: 1581 dinheiros
+- Energia: 232 MW, Valor: 503 dinheiros
+- Energia: 836 MW, Valor: 1772 dinheiros
+- Energia: 944 MW, Valor: 1981 dinheiros
+- Energia: 847 MW, Valor: 1771 dinheiros
+- Energia: 792 MW, Valor: 1576 dinheiros
+- Energia: 614 MW, Valor: 1137 dinheiros
+- Energia: 765 MW, Valor: 1292 dinheiros
+- Energia: 973 MW, Valor: 1632 dinheiros
+- Energia: 559 MW, Valor: 920 dinheiros
+- Energia: 602 MW, Valor: 758 dinheiros
+- Energia: 458 MW, Valor: 556 dinheiros
+Valor Total: 25009
+Melhor valor obtido (Divisão e Conquista): [25009, 10995]
+Lances Selecionados:
+- Energia: 17 MW, Valor: 439 dinheiros
+- Energia: 71 MW, Valor: 1510 dinheiros
+- Energia: 88 MW, Valor: 1484 dinheiros
+- Energia: 95 MW, Valor: 1334 dinheiros
+- Energia: 130 MW, Valor: 835 dinheiros
+- Energia: 290 MW, Valor: 1682 dinheiros
+- Energia: 346 MW, Valor: 1925 dinheiros
+- Energia: 256 MW, Valor: 1313 dinheiros
+- Energia: 275 MW, Valor: 1262 dinheiros
+- Energia: 273 MW, Valor: 1217 dinheiros
+- Energia: 12 MW, Valor: 50 dinheiros
+- Energia: 329 MW, Valor: 1190 dinheiros
+- Energia: 381 MW, Valor: 1215 dinheiros
+- Energia: 61 MW, Valor: 188 dinheiros
+- Energia: 344 MW, Valor: 980 dinheiros
+- Energia: 250 MW, Valor: 685 dinheiros
+- Energia: 756 MW, Valor: 1771 dinheiros
+- Energia: 520 MW, Valor: 877 dinheiros
+- Energia: 899 MW, Valor: 1436 dinheiros
+- Energia: 692 MW, Valor: 956 dinheiros
+- Energia: 102 MW, Valor: 135 dinheiros
+- Energia: 867 MW, Valor: 1147 dinheiros
+- Energia: 854 MW, Valor: 1092 dinheiros
+- Energia: 90 MW, Valor: 90 dinheiros
+- Energia: 404 MW, Valor: 310 dinheiros
+- Energia: 721 MW, Valor: 532 dinheiros
+- Energia: 183 MW, Valor: 130 dinheiros
+- Energia: 520 MW, Valor: 286 dinheiros
+- Energia: 379 MW, Valor: 143 dinheiros
+- Energia: 474 MW, Valor: 117 dinheiros
+- Energia: 292 MW, Valor: 21 dinheiros
+Valor Total: 26352
+Melhor valor obtido (Divisão e Conquista): [26352, 10971]
+Lances Selecionados:
+- Energia: 12 MW, Valor: 974 dinheiros
+- Energia: 11 MW, Valor: 792 dinheiros
+- Energia: 33 MW, Valor: 720 dinheiros
+- Energia: 103 MW, Valor: 1874 dinheiros
+- Energia: 46 MW, Valor: 652 dinheiros
+- Energia: 86 MW, Valor: 1217 dinheiros
+- Energia: 126 MW, Valor: 1390 dinheiros
+- Energia: 208 MW, Valor: 1723 dinheiros
+- Energia: 184 MW, Valor: 1442 dinheiros
+- Energia: 237 MW, Valor: 1822 dinheiros
+- Energia: 352 MW, Valor: 1543 dinheiros
+- Energia: 446 MW, Valor: 1588 dinheiros
+- Energia: 121 MW, Valor: 354 dinheiros
+- Energia: 220 MW, Valor: 571 dinheiros
+- Energia: 525 MW, Valor: 1158 dinheiros
+- Energia: 246 MW, Valor: 534 dinheiros
+- Energia: 556 MW, Valor: 1175 dinheiros
+- Energia: 808 MW, Valor: 1487 dinheiros
+- Energia: 885 MW, Valor: 1616 dinheiros
+- Energia: 254 MW, Valor: 386 dinheiros
+- Energia: 683 MW, Valor: 952 dinheiros
+- Energia: 678 MW, Valor: 745 dinheiros
+- Energia: 469 MW, Valor: 508 dinheiros
+- Energia: 578 MW, Valor: 591 dinheiros
+- Energia: 452 MW, Valor: 456 dinheiros
+- Energia: 663 MW, Valor: 571 dinheiros
+- Energia: 882 MW, Valor: 673 dinheiros
+- Energia: 359 MW, Valor: 145 dinheiros
+- Energia: 727 MW, Valor: 122 dinheiros
+Valor Total: 27781
+Melhor valor obtido (Divisão e Conquista): [27781, 10950]
+Lances Selecionados:
+- Energia: 112 MW, Valor: 1627 dinheiros
+- Energia: 139 MW, Valor: 1798 dinheiros
+- Energia: 143 MW, Valor: 1824 dinheiros
+- Energia: 43 MW, Valor: 411 dinheiros
+- Energia: 392 MW, Valor: 1970 dinheiros
+- Energia: 331 MW, Valor: 1440 dinheiros
+- Energia: 435 MW, Valor: 1417 dinheiros
+- Energia: 555 MW, Valor: 1764 dinheiros
+- Energia: 456 MW, Valor: 1102 dinheiros
+- Energia: 564 MW, Valor: 1277 dinheiros
+- Energia: 861 MW, Valor: 1853 dinheiros
+- Energia: 543 MW, Valor: 1087 dinheiros
+- Energia: 613 MW, Valor: 1226 dinheiros
+- Energia: 750 MW, Valor: 1415 dinheiros
+- Energia: 448 MW, Valor: 825 dinheiros
+- Energia: 852 MW, Valor: 1462 dinheiros
+- Energia: 868 MW, Valor: 1432 dinheiros
+- Energia: 653 MW, Valor: 981 dinheiros
+- Energia: 629 MW, Valor: 943 dinheiros
+- Energia: 970 MW, Valor: 1367 dinheiros
+- Energia: 611 MW, Valor: 685 dinheiros
+Valor Total: 27906
+Melhor valor obtido (Divisão e Conquista): [27906, 10968]
+Tempo de execução (Divisão e Conquista): 0.005s
+
+#PROGRAMAÇÃO DINAMICA
+Energia: 10992 Melhor valor PD: 25982
+Energia: 10923 Melhor valor PD: 26705
+Energia: 10993 Melhor valor PD: 26698
+Energia: 10965 Melhor valor PD: 30589
+Energia: 10926 Melhor valor PD: 29696
+Energia: 10936 Melhor valor PD: 26767
+Energia: 10995 Melhor valor PD: 25009
+Energia: 10971 Melhor valor PD: 26352
+Energia: 10950 Melhor valor PD: 27781
+Energia: 10968 Melhor valor PD: 27906
+Tempo medio para conjunto de 31: 0.006100000000000003
+Energia: 10985 Melhor valor PD: 46071
+Energia: 11000 Melhor valor PD: 38834
+Energia: 10993 Melhor valor PD: 42560
+Energia: 10941 Melhor valor PD: 38774
+Energia: 10994 Melhor valor PD: 40026
+Energia: 10883 Melhor valor PD: 48122
+Energia: 10992 Melhor valor PD: 40563
+Energia: 10973 Melhor valor PD: 47467
+Energia: 10974 Melhor valor PD: 45766
+Energia: 11000 Melhor valor PD: 45846
+Tempo medio para conjunto de 62: 0.005599999999999999
+Energia: 10994 Melhor valor PD: 46720
+Energia: 10986 Melhor valor PD: 47282
+Energia: 10999 Melhor valor PD: 48530
+Energia: 10931 Melhor valor PD: 53693
+Energia: 10998 Melhor valor PD: 56391
+Energia: 10994 Melhor valor PD: 50291
+Energia: 10990 Melhor valor PD: 48365
+Energia: 10998 Melhor valor PD: 53191
+Energia: 10995 Melhor valor PD: 55437
+Energia: 10945 Melhor valor PD: 52525
+Tempo medio para conjunto de 93: 0.0054
+Energia: 11000 Melhor valor PD: 56665
+Energia: 10981 Melhor valor PD: 53292
+Energia: 10995 Melhor valor PD: 61602
+Energia: 10992 Melhor valor PD: 70797
+Energia: 10999 Melhor valor PD: 62875
+Energia: 10989 Melhor valor PD: 67074
+Energia: 10990 Melhor valor PD: 57218
+Energia: 10999 Melhor valor PD: 60544
+Energia: 10998 Melhor valor PD: 65522
+Energia: 10989 Melhor valor PD: 54635
+Tempo medio para conjunto de 124: 0.007000000000000001
+Energia: 11000 Melhor valor PD: 64137
+Energia: 10995 Melhor valor PD: 65319
+Energia: 10983 Melhor valor PD: 66066
+Energia: 10999 Melhor valor PD: 64976
+Energia: 10987 Melhor valor PD: 60679
+Energia: 10997 Melhor valor PD: 65745
+Energia: 11000 Melhor valor PD: 66170
+Energia: 10994 Melhor valor PD: 69851
+Energia: 11000 Melhor valor PD: 70153
+Energia: 10991 Melhor valor PD: 70842
+Tempo medio para conjunto de 155: 0.010799999999999999
+Energia: 10968 Melhor valor PD: 77511
+Energia: 10975 Melhor valor PD: 78774
+Energia: 10996 Melhor valor PD: 73346
+Energia: 11000 Melhor valor PD: 66984
+Energia: 10989 Melhor valor PD: 71811
+Energia: 10991 Melhor valor PD: 74789
+Energia: 10989 Melhor valor PD: 71647
+Energia: 10996 Melhor valor PD: 70182
+Energia: 10997 Melhor valor PD: 76411
+Energia: 10991 Melhor valor PD: 71889
+Tempo medio para conjunto de 186: 0.009
+Energia: 10997 Melhor valor PD: 74158
+Energia: 10999 Melhor valor PD: 71652
+Energia: 10996 Melhor valor PD: 76638
+Energia: 10991 Melhor valor PD: 79227
+Energia: 10995 Melhor valor PD: 70231
+Energia: 11000 Melhor valor PD: 79469
+Energia: 10997 Melhor valor PD: 71060
+Energia: 10990 Melhor valor PD: 74144
+Energia: 10999 Melhor valor PD: 77914
+Energia: 10998 Melhor valor PD: 73084
+Tempo medio para conjunto de 217: 0.009
+Energia: 10993 Melhor valor PD: 89702
+Energia: 10992 Melhor valor PD: 79766
+Energia: 10999 Melhor valor PD: 90716
+Energia: 10996 Melhor valor PD: 88636
+Energia: 10980 Melhor valor PD: 78408
+Energia: 10981 Melhor valor PD: 76935
+Energia: 10986 Melhor valor PD: 83249
+Energia: 10989 Melhor valor PD: 86045
+Energia: 10974 Melhor valor PD: 81576
+Energia: 10999 Melhor valor PD: 76558
+Tempo medio para conjunto de 248: 0.010599999999999998
+Energia: 10990 Melhor valor PD: 100621
+Energia: 10997 Melhor valor PD: 90950
+Energia: 10989 Melhor valor PD: 87450
+Energia: 10993 Melhor valor PD: 83011
+Energia: 10999 Melhor valor PD: 79678
+Energia: 10999 Melhor valor PD: 89186
+Energia: 10990 Melhor valor PD: 94175
+Energia: 10993 Melhor valor PD: 93701
+Energia: 10993 Melhor valor PD: 92633
+Energia: 10998 Melhor valor PD: 83258
+Tempo medio para conjunto de 279: 0.011899999999999997
+Energia: 10998 Melhor valor PD: 91366
+Energia: 10996 Melhor valor PD: 96069
+Energia: 10992 Melhor valor PD: 94483
+Energia: 10991 Melhor valor PD: 107869
+Energia: 11000 Melhor valor PD: 101562
+Energia: 10995 Melhor valor PD: 95401
+Energia: 10995 Melhor valor PD: 98045
+Energia: 10997 Melhor valor PD: 84452
+Energia: 10997 Melhor valor PD: 101291
+Energia: 10999 Melhor valor PD: 88509
+Tempo medio para conjunto de 310: 0.013499999999999998
+Energia: 10999 Melhor valor PD: 90288
+Energia: 10999 Melhor valor PD: 95490
+Energia: 11000 Melhor valor PD: 97500
+Energia: 10994 Melhor valor PD: 102670
+Energia: 10996 Melhor valor PD: 98618
+Energia: 11000 Melhor valor PD: 100462
+Energia: 10984 Melhor valor PD: 106651
+Energia: 10990 Melhor valor PD: 103394
+Energia: 11000 Melhor valor PD: 93540
+Energia: 10999 Melhor valor PD: 101355
+Tempo medio para conjunto de 341: 0.016800000000000002
