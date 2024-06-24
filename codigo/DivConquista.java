@@ -5,6 +5,7 @@ public class DivConquista {
 
     private List<Lance> melhorCombinacao;
     private int melhorValorTotal;
+    private int[][] memo;
 
     public DivConquista() {
         this.melhorCombinacao = new ArrayList<>();
@@ -12,87 +13,53 @@ public class DivConquista {
     }
 
     /**
-     * Resolve o problema de maximização de lucro usando divisão e conquista;
+     * Resolve o problema de maximização de lucro usando programação dinâmica.
      *
-     * @param lances Lista de lances disponíveis;
-     * @param energiaTotal Quantidade total de energia disponível para venda;
+     * @param lances       Lista de lances disponíveis.
+     * @param energiaTotal Quantidade total de energia disponível para venda.
      * @return Um array onde [0] é o maior valor possível obtido pelas vendas,
      * e [1] é a energia total vendida para alcançar esse valor.
      */
     public int[] resolver(List<Lance> lances, int energiaTotal) {
-        melhorValorTotal = 0;
-        melhorCombinacao.clear();
+        int n = lances.size();
+        memo = new int[n + 1][energiaTotal + 1];
+        for (int i = 0; i <= n; i++) {
+            for (int w = 0; w <= energiaTotal; w++) {
+                memo[i][w] = -1;
+            }
+        }
 
-        int[] resultado = divisaoEConquista(lances, energiaTotal);
-
-        // Imprime a melhor combinação encontrada
+        melhorValorTotal = divisaoEConquista(lances, energiaTotal, 0);
         //imprimirMelhorCombinacao();
-
-        return resultado;
+        return new int[]{melhorValorTotal, energiaTotal};
     }
 
     /**
-     * Método recursivo que implementa a divisão e conquista;
+     * Método recursivo com memoização que implementa a programação dinâmica.
      *
-     * @param lances Lista de lances disponíveis;
-     * @param energiaRestante Quantidade de energia restante para venda;
-     * @return Um array onde [0] é o maior valor possível obtido pelas vendas,
-     * e [1] é a energia total vendida para alcançar esse valor com a energia restante.
+     * @param lances          Lista de lances disponíveis.
+     * @param energiaRestante Quantidade de energia restante para venda.
+     * @param indiceLance     Índice do lance atual sendo considerado.
+     * @return O maior valor total possível obtido com os lances disponíveis.
      */
-    private int[] divisaoEConquista(List<Lance> lances, int energiaRestante) {
-        // Caso base: Se não há energia restante ou lances disponíveis, o valor é zero;
-        if (energiaRestante == 0 || lances.isEmpty()) {
-            return new int[] { 0, 0 };
+    private int divisaoEConquista(List<Lance> lances, int energiaRestante, int indiceLance) {
+        if (indiceLance == lances.size()) {
+            return 0;
         }
 
-        // Lance atual (o primeiro da lista);
-        Lance lanceAtual = lances.get(0);
-        // Lista de lances restantes (exceto o primeiro);
-        List<Lance> lancesRestantes = lances.subList(1, lances.size());
+        if (memo[indiceLance][energiaRestante] != -1) {
+            return memo[indiceLance][energiaRestante];
+        }
 
-        // Valor ao incluir o lance atual, se possível;
-        int[] incluirLance = new int[] { 0, 0 };
+        Lance lanceAtual = lances.get(indiceLance);
+        int incluirLance = 0;
         if (lanceAtual.getEnergia() <= energiaRestante) {
-            incluirLance = divisaoEConquista(lancesRestantes, energiaRestante - lanceAtual.getEnergia());
-            incluirLance[0] += lanceAtual.getValor(); // Adiciona o valor do lance atual
-            incluirLance[1] += lanceAtual.getEnergia(); // Adiciona a energia vendida pelo lance atual
-
-            // Se a inclusão do lance atual resultar em um melhor valor, atualiza a melhor combinação
-            if (incluirLance[0] > melhorValorTotal) {
-                melhorValorTotal = incluirLance[0];
-                melhorCombinacao.clear();
-                melhorCombinacao.add(lanceAtual);
-                melhorCombinacao.addAll(getMelhorCombinacao(lancesRestantes, energiaRestante - lanceAtual.getEnergia()));
-            }
+            incluirLance = lanceAtual.getValor() + divisaoEConquista(lances, energiaRestante - lanceAtual.getEnergia(), indiceLance + 1);
         }
+        int excluirLance = divisaoEConquista(lances, energiaRestante, indiceLance + 1);
 
-        // Valor ao excluir o lance atual;
-        int[] excluirLance = divisaoEConquista(lancesRestantes, energiaRestante);
-
-        // Retorna o máximo entre incluir ou excluir o lance atual;
-        if (incluirLance[0] > excluirLance[0]) {
-            return incluirLance;
-        } else {
-            return excluirLance;
-        }
-    }
-
-    /**
-     * Recupera a melhor combinação de lances que resulta no maior valor.
-     *
-     * @param lancesRestantes Lista de lances restantes após incluir um lance.
-     * @param energiaRestante Energia restante após incluir um lance.
-     * @return Lista de lances que compõem a melhor combinação.
-     */
-    private List<Lance> getMelhorCombinacao(List<Lance> lancesRestantes, int energiaRestante) {
-        List<Lance> combinacao = new ArrayList<>();
-        for (Lance lance : lancesRestantes) {
-            if (lance.getEnergia() <= energiaRestante) {
-                combinacao.add(lance);
-                energiaRestante -= lance.getEnergia();
-            }
-        }
-        return combinacao;
+        memo[indiceLance][energiaRestante] = Math.max(incluirLance, excluirLance);
+        return memo[indiceLance][energiaRestante];
     }
 
     /**
@@ -106,6 +73,7 @@ public class DivConquista {
             for (Lance lance : melhorCombinacao) {
                 System.out.println("- Energia: " + lance.getEnergia() + " MW, Valor: " + lance.getValor() + " dinheiros");
             }
+            System.out.println("Valor Total: " + melhorValorTotal);
         }
     }
 }

@@ -23,7 +23,7 @@ public class Main {
             case 1:
                 System.out.println("Executando...");
                 List<List<Lance>> conjuntoT = new ArrayList<>();
-                int energiaTotal = 15000;
+                int energiaTotal = 11000;
 
                 //BACKTRACKING
                 System.out.println("BACKTRACKING");
@@ -386,7 +386,7 @@ public class Main {
     private static List<Lance> gerarConjuntoLances(int tamanho, Random random) {
         List<Lance> lances = new ArrayList<>();
         for (int i = 0; i < tamanho; i++) {
-            int energia = random.nextInt(100) + 1; // Energia entre 1 e 100 MW
+            int energia = random.nextInt(1000) + 1; // Energia entre 1 e 100 MW
             int valor = random.nextInt(2000) + 1; // Valor entre 1 e 2000 reais
             lances.add(new Lance(energia, valor));
         }
