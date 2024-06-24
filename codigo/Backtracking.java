@@ -3,6 +3,8 @@ import java.util.*;
 // O que foi mudado: a condição de termino sera quando a energia for menor que 0 ou se percorreu o conjunto
 // Foi que alterado que antes ele so nao incluia o lance atual, agora ele nao inclui e segue para o proximo
 // Finalizando ao incluir o lance atual ele so fazia isso, agora ele inclui se a energia permitir
+// Conjunto 1 - Tempo:0.292seg , Valor: 26725
+// Conjunto 2 - Tempo:0.337seg , Valor: 40348
 // Assim melhorando o algoritmo
 
 public class Backtracking {
