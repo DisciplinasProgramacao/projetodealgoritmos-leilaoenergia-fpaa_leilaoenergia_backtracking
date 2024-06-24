@@ -6,6 +6,7 @@ import java.util.*;
 // Conjunto 1 - Tempo:0.292seg , Valor: 26725
 // Conjunto 2 - Tempo:0.337seg , Valor: 40348
 // Assim melhorando o algoritmo
+// Se caso executar os testes sem ser dos conjuntos 1 e 2, o tempo e provalvemente o conjunto pode vim diferente
 
 public class Backtracking {
     public List<Lance> melhorCombinacao;
