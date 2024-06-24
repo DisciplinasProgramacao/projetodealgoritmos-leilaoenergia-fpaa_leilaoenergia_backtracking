@@ -6,6 +6,7 @@ public class DivConquista {
     private List<Lance> melhorCombinacao;
     private int melhorValorTotal;
     private int[][] memo;
+    private boolean[][] tomarLance;
 
     public DivConquista() {
         this.melhorCombinacao = new ArrayList<>();
@@ -23,6 +24,8 @@ public class DivConquista {
     public int[] resolver(List<Lance> lances, int energiaTotal) {
         int n = lances.size();
         memo = new int[n + 1][energiaTotal + 1];
+        tomarLance = new boolean[n + 1][energiaTotal + 1];
+
         for (int i = 0; i <= n; i++) {
             for (int w = 0; w <= energiaTotal; w++) {
                 memo[i][w] = -1;
@@ -30,8 +33,11 @@ public class DivConquista {
         }
 
         melhorValorTotal = divisaoEConquista(lances, energiaTotal, 0);
-        //imprimirMelhorCombinacao();
-        return new int[]{melhorValorTotal, energiaTotal};
+        reconstruirMelhorCombinacao(lances, energiaTotal);
+        imprimirMelhorCombinacao();
+
+        int energiaVendida = melhorCombinacao.stream().mapToInt(Lance::getEnergia).sum();
+        return new int[]{melhorValorTotal, energiaVendida};
     }
 
     /**
@@ -58,8 +64,32 @@ public class DivConquista {
         }
         int excluirLance = divisaoEConquista(lances, energiaRestante, indiceLance + 1);
 
-        memo[indiceLance][energiaRestante] = Math.max(incluirLance, excluirLance);
+        if (incluirLance > excluirLance) {
+            tomarLance[indiceLance][energiaRestante] = true;
+            memo[indiceLance][energiaRestante] = incluirLance;
+        } else {
+            memo[indiceLance][energiaRestante] = excluirLance;
+        }
+
         return memo[indiceLance][energiaRestante];
+    }
+
+    /**
+     * Reconstrói a melhor combinação de lances com base na matriz tomarLance.
+     *
+     * @param lances       Lista de lances disponíveis.
+     * @param energiaTotal Quantidade total de energia disponível para venda.
+     */
+    private void reconstruirMelhorCombinacao(List<Lance> lances, int energiaTotal) {
+        melhorCombinacao.clear();
+        int energiaRestante = energiaTotal;
+
+        for (int i = 0; i < lances.size(); i++) {
+            if (tomarLance[i][energiaRestante]) {
+                melhorCombinacao.add(lances.get(i));
+                energiaRestante -= lances.get(i).getEnergia();
+            }
+        }
     }
 
     /**
