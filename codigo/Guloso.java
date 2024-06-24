@@ -27,14 +27,18 @@ public class Guloso {
 
 
     private void imprimirLancesSelecionados(String estrategia, List<Lance> lancesSelecionados, int energiaTotal) {
+        int valorTotal = 0;
         int energiaTotalGuloso = 0;
         System.out.println("Estratégia: " + estrategia);
         System.out.println("Lances Selecionados:");
         for (Lance lance : lancesSelecionados) {
             System.out.println("  Energia: " + lance.getEnergia() + " MW, Valor: " + lance.getValor() + " reais, Valor por MW: " + ((double)lance.getValor() / lance.getEnergia()));
             energiaTotalGuloso += lance.getEnergia();
+            valorTotal += lance.getValor();
+
         }
         System.out.println("Energia Total Vendida (Guloso " + 1 + "): " + energiaTotalGuloso + " MW");
         System.out.println("Energia Não Vendida (Guloso " + 1 + "): " + (energiaTotal - energiaTotalGuloso) + " MW");
+        System.out.println("Valor Total Vendido (Guloso " + 2 + "): " + valorTotal + " reais");
     }
 }
