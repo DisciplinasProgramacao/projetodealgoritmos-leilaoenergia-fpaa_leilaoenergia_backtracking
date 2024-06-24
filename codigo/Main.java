@@ -53,7 +53,8 @@ public class Main {
                         conjuntoT = new ArrayList<>(conjuntoAux);
                         tempoMedioFinal = tempoMedio;
                     } else {
-                        System.out.println("Tamanho conjunto: " + tamanhoConjunto + " Tempo médio: " + tempoMedioFinal);
+                        // Foi alterado a linha para imprimir o tamanho do conjunto. Estava imprimindo o tamanho que passou do tempo limite.
+                        System.out.println("Tamanho conjunto: " + (tamanhoConjunto - 1) + " Tempo médio: " + tempoMedioFinal);
                         for (List<Lance> list : conjuntoT) {
                             backtracking.resolver(list, energiaTotal);
                             System.out.println("Energia: " + backtracking.getEnergiaTotalMelhorCombinacao() + " Valor: " + backtracking.getMelhorValor());
