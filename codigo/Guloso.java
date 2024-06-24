@@ -25,7 +25,7 @@ public class Guloso {
     }
 
     // Algoritmo guloso 2: Maior Valor por Megawatt Primeiro;
-    public int resolverEstrategia2(List<Lance> lances, int energiaDisponivel) {
+    public void resolverEstrategia2(List<Lance> lances, int energiaDisponivel) {
         // Ordenar lances pelo maior valor por megawatt (valor / energia);
         lances.sort((o1, o2) -> Double.compare((double)o2.getValor() / o2.getEnergia(), (double)o1.getValor() / o1.getEnergia()));
 
@@ -42,8 +42,7 @@ public class Guloso {
         }
 
         // Imprimir os lances selecionados;
-        imprimirLancesSelecionados("Maior Valor por Megawatt Primeiro", lancesSelecionados, 2, energiaDisponivel);
-        return valorTotal;
+        System.out.println("Energia: " + energiaVendida + "Valor: " + valorTotal);
     }
 
     private void imprimirLancesSelecionados(String estrategia, List<Lance> lancesSelecionados, int num, int energiaTotal) {

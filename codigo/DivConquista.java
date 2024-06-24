@@ -26,7 +26,7 @@ public class DivConquista {
         int[] resultado = divisaoEConquista(lances, energiaTotal);
 
         // Imprime a melhor combinação encontrada
-        imprimirMelhorCombinacao();
+        //imprimirMelhorCombinacao();
 
         return resultado;
     }
