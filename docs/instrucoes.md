@@ -5,6 +5,6 @@ Para a execução do código é necessário seguir os seguintes passos:
 * Abrir a pasta em uma IDE (ambiente de desenvolvimento integrado).
 * Acessar a pasta "codigo", a pasta onde está o código do projeto, por meio do comando "cd codigo".
 * Executar os comandos "javac Main.java" e "java Main" para rodar o arquivo Main.java do projeto.
-* Selecionar o conjunto de empresas interessadas (1 para o primeiro conjunto e 2 para o segundo conjunto).
-* Selecionar a opção de busca desejada (de 1 a 5).
-* Coloque neste arquivo qualquer instrução que julgar pertinente para a execução correta do sistema: arquivos de configuração, arquivos de dados, possíveis dados de teste etc.
+* Selecionar o conjunto [1. Nosso conjunto (testes), 2. Conjunto empresas interessadas (aula)].
+* Caso 1 tenha sido escolhido, espere os resultados do programa sendo executado. 
+* Caso 2 tenha sido escolhido, selecionar o conjunto de empresas interessadas (1. Conjunto 1, 2. Conjunto 2). Depois espere os resultados do conjunto escolhido.
