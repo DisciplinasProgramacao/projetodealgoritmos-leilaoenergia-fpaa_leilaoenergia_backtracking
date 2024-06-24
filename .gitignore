@@ -23,8 +23,6 @@
 **/hs_err_pid*
 **/replay_pid*
 
-# PDF from classes' notes
-**/*.pdf
 
 # DIA temporary files
 **/*.dia~
