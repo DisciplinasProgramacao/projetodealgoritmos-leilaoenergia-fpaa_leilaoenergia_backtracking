@@ -20,16 +20,19 @@ public class Guloso1 {
         }
 
         // Imprimir os lances selecionados
-        imprimirLancesSelecionados("Maior Valor por Megawatt Primeiro", lancesSelecionados);
+       imprimirLancesSelecionados1("Maior valor por MW primeiro", lancesSelecionados, 2, energiaDisponivel);
         return valorTotal;
     }
 
-    private void imprimirLancesSelecionados(String estrategia, List<Lance> lancesSelecionados) {
+    private void imprimirLancesSelecionados1(String estrategia, List<Lance> lancesSelecionados, int num, int energiaTotal) {
+        int energiaTotalGuloso = 0;
         System.out.println("Estratégia: " + estrategia);
         System.out.println("Lances Selecionados:");
         for (Lance lance : lancesSelecionados) {
             System.out.println("  Energia: " + lance.getEnergia() + " MW, Valor: " + lance.getValor() + " reais, Valor por MW: " + ((double)lance.getValor() / lance.getEnergia()));
+            energiaTotalGuloso += lance.getEnergia();
         }
-        System.out.println();
+        System.out.println("Energia Total Vendida (Guloso " + num + "): " + energiaTotalGuloso + " MW");
+        System.out.println("Energia Não Vendida (Guloso " + num + "): " + (energiaTotal - energiaTotalGuloso) + " MW");
     }
 }

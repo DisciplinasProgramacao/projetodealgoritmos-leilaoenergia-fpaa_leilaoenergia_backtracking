@@ -96,7 +96,7 @@ public class Main {
                 double tempoTotalG2 = 0;
                 for (List<Lance> list : conjuntoT) {
                     long inicioGuloso2 = System.currentTimeMillis();
-                    guloso.resolverEstrategia2(list, energiaTotal);
+                    guloso1.resolverEstrategia2(list, energiaTotal);
                     long fimGuloso2 = System.currentTimeMillis();
                     double tempo = (fimGuloso2 - inicioGuloso2) / 1000.0;
                     tempoTotalG2 += tempo;
@@ -110,7 +110,7 @@ public class Main {
                     for (int j = 0; j < 10; j++) {
                         List<Lance> lista = gerarConjuntoLances(auxSize, random);
                         long inicioGuloso2 = System.currentTimeMillis();
-                        guloso.resolverEstrategia2(lista, energiaTotal);
+                        guloso1.resolverEstrategia2(lista, energiaTotal);
                         long fimGuloso2 = System.currentTimeMillis();
                         double tempo = (fimGuloso2 - inicioGuloso2) / 1000.0;
                         tempoTotal += tempo;
@@ -266,7 +266,7 @@ public class Main {
 
                         // Testando algoritmo guloso 2 (melhor razão valor/energia)
                         System.out.println("Guloso 2");
-                        Guloso algoritmoGuloso2 = new Guloso();
+                        Guloso1 algoritmoGuloso2 = new Guloso1();
                         long inicioGuloso2Aula = System.currentTimeMillis();
                         algoritmoGuloso2.resolverEstrategia2(lances, energiaTotalAula);
                         long fimGuloso2 = System.currentTimeMillis();
@@ -336,7 +336,7 @@ public class Main {
 
                         // Testando algoritmo guloso 2 (melhor razão valor/energia)
                         System.out.println("Guloso 2");
-                        algoritmoGuloso2 = new Guloso();
+                        algoritmoGuloso2 = new Guloso1();
                         inicioGuloso2Aula = System.currentTimeMillis();
                         algoritmoGuloso2.resolverEstrategia2(lances1, energiaTotalAula);
                         fimGuloso2 = System.currentTimeMillis();
